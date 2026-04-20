@@ -63,7 +63,10 @@ h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
   height: 0.55em;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 200 18'%3E%3Cpath d='M2 13 C25 5, 55 16, 90 9 C120 3, 155 15, 175 8 C185 5, 194 11, 198 8' stroke='%239d1e39' stroke-width='3.5' fill='none' stroke-linecap='round' opacity='0.5'/%3E%3Cpath d='M5 16 C35 10, 75 17, 115 12 C148 8, 178 16, 197 12' stroke='%23ddbbb2' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.65'/%3E%3C/svg%3E") center/100% 100% no-repeat;
   pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.75s cubic-bezier(0.3, 0, 0.2, 1);
 }
+.u.drawn::after { clip-path: inset(0 0% 0 0); }
 .u2 {
   position: relative;
   display: inline;
@@ -76,7 +79,10 @@ h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
   height: 0.6em;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 220 20'%3E%3Cpath d='M3 14 C50 4, 110 18, 165 7 C185 3, 205 13, 217 9' stroke='%239d1e39' stroke-width='4' fill='none' stroke-linecap='round' opacity='0.45'/%3E%3C/svg%3E") center/100% 100% no-repeat;
   pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.85s cubic-bezier(0.3, 0, 0.2, 1);
 }
+.u2.drawn::after { clip-path: inset(0 0% 0 0); }
 .enc {
   position: relative;
   display: inline;
@@ -88,7 +94,10 @@ h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
   inset: -0.3em -0.4em;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 120 44'%3E%3Cellipse cx='60' cy='22' rx='55' ry='18' stroke='%239d1e39' stroke-width='2.5' fill='none' opacity='0.4' transform='rotate(-1.8 60 22)'/%3E%3Cpath d='M12 34 Q8 36 10 38' stroke='%239d1e39' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.35'/%3E%3C/svg%3E") center/100% 100% no-repeat;
   pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.3, 0, 0.2, 1);
 }
+.enc.drawn::after { clip-path: inset(0 0% 0 0); }
 
 .italic { font-style: italic; }
 .tag {
@@ -571,28 +580,41 @@ footer a:hover { color: var(--rose-pale); }
 
 /* ─── BLOG PAGE ────────────────────────────── */
 .blog-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
   margin-top: 3rem;
 }
 .blog-card {
   background: var(--white);
-  border-radius: 1.2rem;
+  border-radius: 1rem;
   overflow: hidden;
   border: 1px solid rgba(157,30,57,0.1);
   transition: all 0.3s;
   cursor: pointer;
+  display: flex;
+  align-items: stretch;
 }
-.blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(157,30,57,0.15); }
+.blog-card:hover { box-shadow: 0 8px 32px rgba(157,30,57,0.14); transform: translateY(-2px); }
 .blog-img {
-  height: 180px;
+  width: 220px;
+  min-width: 220px;
   background: linear-gradient(135deg, var(--rose-wash), var(--warm));
   display: flex; align-items: center; justify-content: center;
   font-size: 3rem;
+  overflow: hidden;
+  flex-shrink: 0;
 }
-.blog-body { padding: 1.6rem; }
-.blog-meta { font-size: 0.78rem; color: var(--light); margin-bottom: 0.5rem; }
-.blog-body h3 { font-size: 1.1rem; margin-bottom: 0.6rem; }
-.blog-body p { font-size: 0.85rem; color: var(--mid); }
+.blog-img img {
+  width: 220px;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.blog-body { padding: 1.4rem 1.6rem; display: flex; flex-direction: column; justify-content: center; }
+.blog-meta { font-size: 0.78rem; color: var(--light); margin-bottom: 0.4rem; }
+.blog-body h3 { font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.35; color: var(--dark); }
+.blog-body p { font-size: 0.88rem; color: var(--mid); margin: 0; }
 .blog-tag-pill {
   display: inline-block;
   background: var(--rose-wash);
@@ -602,6 +624,52 @@ footer a:hover { color: var(--rose-pale); }
   font-size: 0.75rem;
   margin-bottom: 0.7rem;
 }
+
+/* ─── BLOG DETAIL ──────────────────────────── */
+.blog-detail-hero {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.8rem;
+}
+.blog-detail-header {
+  background: linear-gradient(135deg, var(--rose-wash) 0%, #f0ddd8 100%);
+  padding: 50px 5vw 36px;
+  text-align: left;
+}
+.blog-detail-header .blog-meta { font-size: 0.85rem; color: var(--mid); margin-bottom: 0.8rem; }
+.blog-detail-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-top: 0.5rem; text-align: left; }
+.blog-detail-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 5vw;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.blog-detail-body-img { position: sticky; top: 88px; }
+.blog-detail-content {
+  font-size: 1rem;
+  color: var(--mid);
+  line-height: 1.8;
+  text-align: left;
+}
+@media (max-width: 760px) {
+  .blog-detail-body { grid-template-columns: 1fr; }
+  .blog-detail-body-img { position: static; }
+  .blog-detail-hero { min-height: 220px; }
+}
+.blog-detail-content h2,
+.blog-detail-content h3 { color: var(--dark); margin: 2rem 0 0.8rem; font-family: 'Cormorant Garamond', serif; }
+.blog-detail-content p { margin-bottom: 1.2rem; }
+.blog-detail-content img { max-width: 100%; border-radius: 0.8rem; margin: 1rem 0; }
+.blog-detail-content a { color: var(--rose); }
+.blog-detail-content ul, .blog-detail-content ol { padding-left: 1.5rem; margin-bottom: 1.2rem; }
+.blog-detail-content li { margin-bottom: 0.4rem; }
+.blog-loading { text-align: center; padding: 5rem 1rem; color: var(--mid); }
 
 /* ─── CONTACT PAGE ─────────────────────────── */
 .contact-grid {
@@ -673,7 +741,8 @@ footer a:hover { color: var(--rose-pale); }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding: 50px 5vw; }
   .hero-visual { display: none; }
-  .grid-2, .grid-3, .courses-grid, .references-grid, .blog-grid, .contact-grid, .about-grid { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .courses-grid, .references-grid, .contact-grid, .about-grid { grid-template-columns: 1fr; }
+  .blog-img { width: 140px; min-width: 140px; }
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }
   .approach-inner { grid-template-columns: 1fr; gap: 3rem; }
   .course-includes { grid-template-columns: 1fr; }
@@ -688,6 +757,9 @@ footer a:hover { color: var(--rose-pale); }
 @media (max-width: 600px) {
   .benefits-grid { grid-template-columns: 1fr 1fr; }
   .hero-btns { flex-direction: column; }
+  .blog-card { flex-direction: column; }
+  .blog-img { width: 100%; min-width: 0; height: 180px; }
+  .blog-img img { width: 100%; height: 180px; }
 }
 </style>
 </head>
@@ -727,7 +799,7 @@ footer a:hover { color: var(--rose-pale); }
   <!-- HERO -->
   <section class="hero">
     <div class="hero-text fade-in">
-      <span class="tag">Porodní asistentka · Příbram</span>
+      <span class="tag">Porodní asistentka Šárka Mašková · Příbram</span>
       <h1>Připravte se na porod<br>s <span class="u2"><em>klidem a jistotou</em></span></h1>
       <p>Individuální předporodní kurzy a konzultace. Propojuji odbornou praxi s lidským přístupem, aby se nastávající rodiče cítili připravení a sebejistí.</p>
       <div class="hero-btns">
@@ -744,7 +816,7 @@ footer a:hover { color: var(--rose-pale); }
           <circle cx="85" cy="78" r="10" fill="white" opacity="0.6"/>
         </svg>
       </div>
-      <div class="hero-card" style="top:12%;right:-2%">🌿 3 individuální setkání</div>
+      <div class="hero-card" style="top:12%;right:-2%">🌿 respektující a individuální péče</div>
       <div class="hero-card" style="bottom:18%;left:-5%">💛 Příbram & okolí</div>
     </div>
   </section>
@@ -916,8 +988,8 @@ footer a:hover { color: var(--rose-pale); }
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Šárka Mašková — Studio porodních kurzů</span>
-      <span>studioporodnichkurzu.cz</span>
+      <span>© 2026 Šárka Mašková — Porodní kurzy Příbram a okolí</span>
+      <span>porodnikurzy.cz</span>
     </div>
   </footer>
 
@@ -1330,6 +1402,7 @@ footer a:hover { color: var(--rose-pale); }
     <p>Praktické rady a informace pro nastávající maminky a páry</p>
   </div>
 
+  <div id="blog-list-view">
   <section class="section">
     <div class="container">
       <div class="blog-grid fade-in">
@@ -1410,6 +1483,9 @@ footer a:hover { color: var(--rose-pale); }
       </div>
     </div>
   </section>
+  </div><!-- end blog-list-view -->
+
+  <div id="blog-detail-view" style="display:none"></div>
 
   <footer>
     <div class="footer-inner">
@@ -1535,6 +1611,123 @@ function showPage(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   closeDetail();
   setTimeout(initFadeIn, 100);
+  setTimeout(initDrawings, 150);
+  if (id === 'blog') { hideBlogPost(); loadBlogPosts(); }
+}
+
+async function showBlogPost(postId) {
+  const listView = document.getElementById('blog-list-view');
+  const detailView = document.getElementById('blog-detail-view');
+  if (!listView || !detailView) return;
+
+  listView.style.display = 'none';
+  detailView.style.display = 'block';
+  detailView.innerHTML = '<div class="blog-loading"><p>Načítám příspěvek…</p></div>';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  try {
+    const res = await fetch(
+      `https://blog.porodnikurzy.cz/wp-json/wp/v2/posts/${Number(postId)}?_fields=id,title,content,date,featured_image_url`,
+      { mode: 'cors' }
+    );
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const post = await res.json();
+
+    const title = post.title.rendered;
+    const content = post.content.rendered;
+    const date = _formatDate(post.date);
+
+    let heroImg = '';
+    if (post.featured_image_url) {
+      heroImg = `<img class="blog-detail-hero" src="${post.featured_image_url}" alt="">`;
+    }
+
+    detailView.innerHTML = `
+      <div class="blog-detail-header">
+        <div class="container">
+          <button onclick="hideBlogPost()" style="background:rgba(157,30,57,0.1);border:none;color:var(--rose);padding:0.4rem 1.2rem;border-radius:2rem;cursor:pointer;font-size:0.82rem;margin-bottom:1.5rem;font-family:'DM Sans',sans-serif">← Zpět na blog</button>
+          <div class="blog-meta">${date}</div>
+          <h1>${title}</h1>
+        </div>
+      </div>
+      <div class="blog-detail-body">
+        ${heroImg ? `<div class="blog-detail-body-img">${heroImg}</div>` : ''}
+        <div class="blog-detail-content">${content}</div>
+      </div>
+    `;
+  } catch (e) {
+    detailView.innerHTML = `
+      <div class="blog-loading">
+        <p>Příspěvek se nepodařilo načíst.</p>
+        <button onclick="hideBlogPost()" class="btn btn-outline" style="margin-top:1.5rem">← Zpět na blog</button>
+      </div>`;
+    console.error('Chyba při načítání příspěvku:', e);
+  }
+}
+
+function hideBlogPost() {
+  const listView = document.getElementById('blog-list-view');
+  const detailView = document.getElementById('blog-detail-view');
+  if (listView) listView.style.display = '';
+  if (detailView) detailView.style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Blog: dynamic WP REST API ────────────────────────────────
+let blogLoaded = false;
+
+function _stripHtml(html) {
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  return (d.textContent || d.innerText || '').trim();
+}
+
+function _formatDate(iso) {
+  return new Date(iso).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function _blogCardHtml(post) {
+  const id = post.id;
+  const title = post.title.rendered;
+  const excerpt = _stripHtml(post.excerpt.rendered);
+  const date = _formatDate(post.date);
+
+  let imgHtml = '<div class="blog-img">📝</div>';
+  if (post.featured_image_url) {
+    imgHtml = `<div class="blog-img" style="background:none;padding:0"><img src="${post.featured_image_url}" alt=""></div>`;
+  }
+
+  return `<div class="blog-card" onclick="showBlogPost(${Number(id)})" style="cursor:pointer">
+    ${imgHtml}
+    <div class="blog-body">
+      <div class="blog-meta">${date}</div>
+      <h3>${title}</h3>
+      <p>${excerpt.slice(0, 140)}${excerpt.length > 140 ? '…' : ''}</p>
+    </div>
+  </div>`;
+}
+
+async function loadBlogPosts() {
+  if (blogLoaded) return;
+  const grid = document.querySelector('#page-blog .blog-grid');
+  if (!grid) return;
+
+  try {
+    const res = await fetch(
+      'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts?per_page=6&_fields=id,title,excerpt,date,featured_image_url',
+      { mode: 'cors' }
+    );
+    if (!res.ok) return;
+    const posts = await res.json();
+    if (!Array.isArray(posts) || posts.length === 0) return;
+
+    grid.innerHTML = posts.map(_blogCardHtml).join('');
+    blogLoaded = true;
+    setTimeout(initFadeIn, 50);
+  } catch (e) {
+    // Keep static placeholder content on error
+    console.info('Blog API nedostupné, zobrazuji zástupný obsah.', e.message);
+  }
 }
 
 function openCourse(id) {
@@ -1564,8 +1757,27 @@ function initFadeIn() {
   els.forEach(el => observer.observe(el));
 }
 
+function initDrawings() {
+  const els = document.querySelectorAll('.page.active .u, .page.active .u2, .page.active .enc');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // small delay so it fires after the text fades in
+        setTimeout(() => e.target.classList.add('drawn'), 200);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.8 });
+  els.forEach(el => {
+    if (!el.classList.contains('drawn')) observer.observe(el);
+  });
+}
+
 // Init on load
-window.addEventListener('DOMContentLoaded', () => setTimeout(initFadeIn, 200));
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(initFadeIn, 200);
+  setTimeout(initDrawings, 350);
+});
 </script>
 </body>
 </html>
