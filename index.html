@@ -92,7 +92,7 @@ h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
   content: '';
   position: absolute;
   inset: -0.3em -0.4em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 120 44'%3E%3Cellipse cx='60' cy='22' rx='55' ry='18' stroke='%239d1e39' stroke-width='2.5' fill='none' opacity='0.4' transform='rotate(-1.8 60 22)'/%3E%3Cpath d='M12 34 Q8 36 10 38' stroke='%239d1e39' stroke-width='2' fill='none' stroke-linecap='round' opacity='0.35'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 120 44'%3E%3Cellipse cx='60' cy='22' rx='55' ry='18' stroke='%239d1e39' stroke-width='2.5' fill='none' opacity='0.4' transform='rotate(-1.8 60 22)'/%3E%3C/svg%3E") center/100% 100% no-repeat;
   pointer-events: none;
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1s cubic-bezier(0.3, 0, 0.2, 1);
@@ -211,6 +211,26 @@ nav {
 }
 
 /* ─── HERO ─────────────────────────── HOME ─── */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background-image: url('studio web images/hero-bg.png');
+  background-size: cover;
+  background-position: right center;
+}
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    #fdf9f8 0%,
+    #fdf9f8 28%,
+    rgba(253,249,248,0.82) 42%,
+    rgba(253,249,248,0.25) 62%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
 .hero {
   min-height: calc(100vh - 68px);
   display: grid; grid-template-columns: 1fr 1fr;
@@ -218,6 +238,8 @@ nav {
   padding: 60px 5vw;
   max-width: 1200px; margin: 0 auto;
   gap: 4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-text .tag { margin-bottom: 1.2rem; }
@@ -255,9 +277,12 @@ nav {
   66% { border-radius: 55% 45% 60% 40% / 40% 55% 45% 60%; }
 }
 
-.hero-blob svg {
-  width: 65%;
-  opacity: 0.7;
+.hero-blob img {
+  width: 85%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 /* floating cards */
@@ -543,6 +568,32 @@ footer a:hover { color: var(--rose-pale); }
 .edu-item h4 { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; }
 .edu-item p { font-size: 0.85rem; color: var(--light); margin: 0; }
 
+/* ─── BABY CAROUSEL ────────────────────────── */
+.baby-carousel-wrap {
+  overflow: hidden;
+  margin-bottom: 4rem;
+  position: relative;
+}
+.baby-carousel {
+  display: flex;
+  gap: 1.2rem;
+  animation: babyScroll 18s linear infinite;
+  width: max-content;
+}
+.baby-carousel img {
+  width: clamp(110px, 16vw, 155px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--rose-pale);
+  flex-shrink: 0;
+}
+@keyframes babyScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.baby-carousel-wrap:hover .baby-carousel { animation-play-state: paused; }
+
 /* ─── REFERENCES PAGE ──────────────────────── */
 .references-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
@@ -739,6 +790,8 @@ footer a:hover { color: var(--rose-pale); }
 
 /* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 900px) {
+  .hero-section::after { background: linear-gradient(to bottom, rgba(253,249,248,0.6) 0%, #fdf9f8 45%); }
+  .hero-section::after { background: linear-gradient(to bottom, rgba(253,249,248,0.55) 0%, #fdf9f8 50%); }
   .hero { grid-template-columns: 1fr; min-height: auto; padding: 50px 5vw; }
   .hero-visual { display: none; }
   .grid-2, .grid-3, .courses-grid, .references-grid, .contact-grid, .about-grid { grid-template-columns: 1fr; }
@@ -797,10 +850,11 @@ footer a:hover { color: var(--rose-pale); }
 <div id="page-home" class="page active">
 
   <!-- HERO -->
+  <div class="hero-section">
   <section class="hero">
     <div class="hero-text fade-in">
       <span class="tag">Porodní asistentka Šárka Mašková · Příbram</span>
-      <h1>Připravte se na porod<br>s <span class="u2"><em>klidem a jistotou</em></span></h1>
+      <h1>Porod s<br> <span class="u2"><em>klidem a jistotou</em></span></h1>
       <p>Individuální předporodní kurzy a konzultace. Propojuji odbornou praxi s lidským přístupem, aby se nastávající rodiče cítili připravení a sebejistí.</p>
       <div class="hero-btns">
         <button class="btn btn-primary" onclick="showPage('kurzy')">Prohlédnout kurzy</button>
@@ -809,17 +863,13 @@ footer a:hover { color: var(--rose-pale); }
     </div>
     <div class="hero-visual">
       <div class="hero-blob">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#ddbbb2" opacity="0.35" d="M100 20 C130 20 155 45 165 70 C175 95 170 130 150 150 C130 170 95 175 70 160 C45 145 30 115 35 85 C40 55 70 20 100 20Z" opacity="0.3"/>
-          <circle cx="100" cy="90" r="35" fill="#cd9c8f" opacity="0.5"/>
-          <ellipse cx="100" cy="130" rx="28" ry="22" fill="#9d1e39" opacity="0.25"/>
-          <circle cx="85" cy="78" r="10" fill="white" opacity="0.6"/>
-        </svg>
+        <img src="sarka_maskova.png" alt="Šárka Mašková, porodní asistentka">
       </div>
-      <div class="hero-card" style="top:12%;right:-2%">🌿 respektující a individuální péče</div>
-      <div class="hero-card" style="bottom:18%;left:-5%">💛 Příbram & okolí</div>
+      <div class="hero-card" style="top:12%;right:-8%">🌿 respektující a individuální péče</div>
+      <div class="hero-card" style="bottom:18%;left:-5%">💛 Příbram &amp; okolí</div>
     </div>
   </section>
+  </div>
 
   <!-- BENEFITS -->
   <section class="benefits-strip">
@@ -1289,79 +1339,52 @@ footer a:hover { color: var(--rose-pale); }
   <div class="page-header">
     <span class="tag">Reference</span>
     <h1>Co říkají <span class="enc">maminky</span></h1>
-    <p>Zpětná vazba párů, které prošly mými kurzy</p>
+    <p>Zpětná vazba od maminek, které prošly mými kurzy</p>
   </div>
 
   <section class="section">
     <div class="container">
 
-      <!-- Summary -->
-      <div style="display:flex;gap:3rem;justify-content:center;text-align:center;margin-bottom:4rem;flex-wrap:wrap" class="fade-in">
-        <div>
-          <div style="font-size:3rem;font-family:'Cormorant Garamond',serif;font-weight:300;color:var(--rose)">5.0</div>
-          <div style="color:var(--rose-light);margin-bottom:0.3rem">★★★★★</div>
-          <div style="font-size:0.85rem;color:var(--mid)">průměrné hodnocení</div>
-        </div>
-        <div style="width:1px;background:rgba(157,30,57,0.2)"></div>
-        <div>
-          <div style="font-size:3rem;font-family:'Cormorant Garamond',serif;font-weight:300;color:var(--rose)">100+</div>
-          <div style="font-size:0.85rem;color:var(--mid)">spokojených párů</div>
-        </div>
-        <div style="width:1px;background:rgba(157,30,57,0.2)"></div>
-        <div>
-          <div style="font-size:3rem;font-family:'Cormorant Garamond',serif;font-weight:300;color:var(--rose)">98%</div>
-          <div style="font-size:0.85rem;color:var(--mid)">by kurz doporučilo</div>
+      <!-- Baby photos carousel -->
+      <div class="baby-carousel-wrap fade-in">
+        <div class="baby-carousel" id="babyCarousel">
+          <img src="studio web images/reference1.png" alt="">
+          <img src="studio web images/reference2.png" alt="">
+          <img src="studio web images/reference3.png" alt="">
+          <img src="studio web images/reference4.png" alt="">
+          <img src="studio web images/reference5.png" alt="">
+          <img src="studio web images/reference6.png" alt="">
         </div>
       </div>
 
       <div class="references-grid fade-in">
 
         <div class="ref-card">
-          <p>Kurz splnil vše, co jsem očekávala. Šárka má skvělý přístup, vše vysvětluje srozumitelně a s klidem. K porodu jsem šla s úplně jiným pocitem — s vědomím, že vím co přijde a co mám dělat.</p>
-          <div class="ref-author">
-            <div class="ref-avatar">TK</div>
-            <div class="ref-author-info"><strong>Tereza K.</strong><span>Individuální kurz · 1. dítě</span></div>
-          </div>
+          <p>Tak už jsme na světě. Jmenuji se Lucie a vážím 3,93 kg. Na svět jsem ji porodila před polednem. Bez vašich skvělých rad bych byla úplně marná! Strašně moc děkuji a budu vás všude chválit a doporučovat.</p>
         </div>
 
         <div class="ref-card">
-          <p>Nejvíc mi pomohla část o práci s dechem. Měla jsem techniky, které jsem skutečně použila přímo u porodu. Manžel byl taky nadšený — konečně věděl, co má dělat a jak mi pomoci.</p>
-          <div class="ref-author">
-            <div class="ref-avatar">MS</div>
-            <div class="ref-author-info"><strong>Markéta S.</strong><span>Individuální kurz · 2. dítě</span></div>
-          </div>
+          <p>V neděli se nám narodila Nelinka. Vaše rady, které jste mi během kurzu dala, mi u porodu strašně pomohly. Chci vám strašně moc poděkovat!! Jste skvělá!</p>
         </div>
 
         <div class="ref-card">
-          <p>Velmi doporučuji individuální kurz. Šárka věnovala pozornost přesně tomu, co jsem potřebovala já — ne obecné přednášce. Cítila jsem, že jí záleží na tom, abych odcházela s jistotou.</p>
-          <div class="ref-author">
-            <div class="ref-avatar">JH</div>
-            <div class="ref-author-info"><strong>Jana H.</strong><span>Individuální kurz · 1. dítě</span></div>
-          </div>
+          <p>Chtěla jsem Vám moc poděkovat za cenné informace, které jste mi dala — bylo to s Vámi moc příjemné posezení. Snad neskončíme u jednoho miminka a pokud se zadaří, ráda Vás zase uvidím. Ještě jednou moc děkuji a přeji ať se Vám vše daří.</p>
         </div>
 
         <div class="ref-card">
-          <p>Přišla jsem s obavami z porodu a odcházela jsem s klidem. Šárka dokáže vysvětlit i náročnější témata tak, aby nezazněla strašidelně. Tenhle kurz bych doporučila každé nastávající mamince.</p>
-          <div class="ref-author">
-            <div class="ref-avatar">PV</div>
-            <div class="ref-author-info"><strong>Petra V.</strong><span>Kurz ve skupině · 1. dítě</span></div>
-          </div>
+          <p>Hlásím se z porodnice — dnes ráno v 5:40 přišel na svět náš Lukáš. Ještě jednou moc děkujeme za krásný předporodní kurz. Snažila jsem se využít správné dýchání, ale našla jsem si vlastní rytmus. Velmi mi pomohlo, že jsem věděla, co se bude dít a jak se vše bude odvíjet. Odvádíte skvělou práci.</p>
         </div>
 
         <div class="ref-card">
-          <p>Oceňuji hlavně individuální přístup — vše bylo přizpůsobeno mé situaci. Součástí bylo i cvičení na bolest beder, která mě trápila. Po dvou setkáních se výrazně zlepšila.</p>
-          <div class="ref-author">
-            <div class="ref-avatar">LM</div>
-            <div class="ref-author-info"><strong>Lucie M.</strong><span>Konzultace + kurz · 1. dítě</span></div>
-          </div>
+          <p>Náš malý přišel na svět 21. 11. s lehkým přenesením — měl 4,38 kg a šel bez vyvolávání přirozeně. Kdybych neměla ty informace od Vás, tak bych do toho nikdy nešla, a takhle jsem zvládla odrodit 4kg dítě. Přítel byl nesmírně úžasný. Zdravíme a děkujeme za vše!</p>
         </div>
 
         <div class="ref-card">
-          <p>Partner byl ze začátku skeptický, ale po prvním setkání byl nadšený. Říká, že díky kurzu věděl, co dělat, a porod byl pro nás oba mnohem méně stresující. Šárce mockrát děkujeme!</p>
-          <div class="ref-author">
-            <div class="ref-avatar">KN</div>
-            <div class="ref-author-info"><strong>Kateřina N.</strong><span>Individuální kurz · 1. dítě</span></div>
-          </div>
+          <p>Chtěla bych Vám poděkovat za předporodní kurz absolvovaný 21. 2. Mnohé z rad jsem uplatnila při porodu o týden později, hlavně prodýchávání. Celkově jsem se cítila informovanější v neznámé situaci. S porodnicí v Příbrami jsme byli velice spokojeni.</p>
+        </div>
+
+        <div class="ref-card">
+          <p>V pondělí v 16:44 se nám narodila nejúžasnější holčička Jasmínka, měla 2,96 kg. Porod proběhl nad moje očekávání krásně, vše postupovalo přirozeně, Vaše kolegyně byla skvělá. Ještě jednou velice děkujeme za všechnu podporu, vlídný přístup a předané zkušenosti — velice nám to pomohlo.</p>
         </div>
 
       </div>
@@ -1777,6 +1800,13 @@ function initDrawings() {
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(initFadeIn, 200);
   setTimeout(initDrawings, 350);
+
+  // Baby carousel — duplicate images for seamless infinite scroll
+  const carousel = document.getElementById('babyCarousel');
+  if (carousel) {
+    const clone = carousel.innerHTML;
+    carousel.innerHTML += clone;
+  }
 });
 </script>
 </body>
