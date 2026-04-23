@@ -318,12 +318,15 @@ nav {
 }
 .benefit-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.7rem; }
 .benefit-icon {
-  width: 52px; height: 52px;
+  width: 64px; height: 64px;
   background: var(--white);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
   box-shadow: 0 2px 12px rgba(157,30,57,0.15);
+  padding: 10px;
+}
+.benefit-icon img {
+  width: 100%; height: 100%; object-fit: contain;
 }
 .benefit-item h4 { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; }
 .benefit-item p { font-size: 0.82rem; color: var(--mid); }
@@ -360,11 +363,30 @@ nav {
 
 /* ─── HOME: APPROACH ───────────────────────── */
 .approach-section {
-  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+  background-image: url('muj_pristup_studio.png');
+  background-size: 75%;
+  background-position: 110% center;
   color: var(--white);
   padding: 90px 5vw;
 }
+.approach-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    #7a1228 0%,
+    #9d1e39 25%,
+    rgba(157,30,57,0.85) 45%,
+    rgba(157,30,57,0.3) 68%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
 .approach-inner {
+  position: relative;
+  z-index: 1;
   max-width: 1100px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center;
 }
@@ -538,7 +560,8 @@ footer a:hover { color: var(--rose-pale); }
   overflow: hidden;
   position: relative;
 }
-.portrait-frame svg { width: 50%; opacity: 0.4; }
+.portrait-frame img { display: block; }
+
 .portrait-overlay {
   position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
   background: rgba(255,255,255,0.9);
@@ -551,6 +574,35 @@ footer a:hover { color: var(--rose-pale); }
 
 .about-content h2 { margin-bottom: 1.2rem; }
 .about-content p { color: var(--mid); margin-bottom: 1.2rem; font-size: 0.95rem; }
+
+/* Příběh section — photo background */
+.about-story-wrap {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  padding: 3rem;
+}
+.about-story-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('o_mne_image.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.about-story-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(253,249,248,0.6) 35%,
+    rgba(253,249,248,0.93) 58%,
+    #fdf9f8 100%);
+  z-index: 1;
+}
+.about-story-wrap > * { position: relative; z-index: 2; }
 .edu-item {
   border-left: 2px solid var(--rose-pale);
   padding-left: 1.5rem;
@@ -865,8 +917,8 @@ footer a:hover { color: var(--rose-pale); }
       <div class="hero-blob">
         <img src="sarka_maskova.png" alt="Šárka Mašková, porodní asistentka">
       </div>
-      <div class="hero-card" style="top:12%;right:-8%">🌿 respektující a individuální péče</div>
-      <div class="hero-card" style="bottom:18%;left:-5%">💛 Příbram &amp; okolí</div>
+      <div class="hero-card" style="top:82%;right:-8%">🌿 respektující a individuální péče</div>
+      <div class="hero-card" style="bottom:75%;left:-5%">💛 Příbram &amp; okolí</div>
     </div>
   </section>
   </div>
@@ -875,22 +927,22 @@ footer a:hover { color: var(--rose-pale); }
   <section class="benefits-strip">
     <div class="benefits-grid fade-in">
       <div class="benefit-item">
-        <div class="benefit-icon">🤱</div>
+        <div class="benefit-icon"><img src="icons web studio/1.png" alt=""></div>
         <h4>Příprava na porod</h4>
         <p>Srozumitelně, krok za krokem</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">🫁</div>
+        <div class="benefit-icon"><img src="icons web studio/2.png" alt=""></div>
         <h4>Práce s tělem a dechem</h4>
         <p>Zvládání porodní bolesti</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">💑</div>
+        <div class="benefit-icon"><img src="icons web studio/3.png" alt=""></div>
         <h4>Příprava partnera</h4>
         <p>Aktivní role u porodu</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">🌸</div>
+        <div class="benefit-icon"><img src="icons web studio/4.png" alt=""></div>
         <h4>Podpora po porodu</h4>
         <p>Šestinedělí a péče o novorozence</p>
       </div>
@@ -985,18 +1037,18 @@ footer a:hover { color: var(--rose-pale); }
       <div class="grid-3 fade-in">
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
-          <p>„Kurz splnil vše, co jsem očekávala. Šárka má skvělý přístup, vše vysvětluje srozumitelně a s klidem. K porodu jsem šla s úplně jiným pocitem."</p>
-          <div class="testimonial-name">Tereza K. — 1. dítě</div>
+          <p>„Dávám vědět až teď, ale bylo toho moc a museli jsme to zpracovat. V pondělí v 16:44 se nám narodila nejúžasnější holčička Jasmínka, měla 2,96 kg. Musím říct, že porod proběhl nad moje očekávání krásně, vše postupovalo naprosto přirozeně tak, jak mělo, Vaše kolegyně byla skvělá. Ještě jednou velice děkujeme za všechnu podporu, vlídný přístup a předané zkušenosti, velice nám to pomohlo."</p>
+          <div class="testimonial-name">Iva Peterková</div>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
-          <p>„Nejvíc mi pomohla část o práci s dechem. Měla jsem techniky, které jsem skutečně použila. Manžel byl taky nadšený — věděl, co dělat."</p>
-          <div class="testimonial-name">Markéta S. — 2. dítě</div>
+          <p>„Chtěla bych Vám ještě dodatečně poděkovat za předporodní kurz, který jsem u Vás absolvovala 21. 2. Mnohé z rad jsem uplatnila při porodu o týden později, hlavně to prodýchávání. A celkově jsem se cítila informovanější v neznámé situaci. Jinak s porodnicí v Příbrami jsme byli velice spokojeni."</p>
+          <div class="testimonial-name">Hana Raschmanová</div>
         </div>
         <div class="testimonial-card">
           <div class="stars">★★★★★</div>
-          <p>„Velmi doporučuji individuální kurz. Šárka věnovala pozornost přesně tomu, co jsem potřebovala já, ne obecné přednášce pro skupinu."</p>
-          <div class="testimonial-name">Jana H. — 1. dítě</div>
+          <p>„Tak už jsme na světě. Jmenuji se Lucie a vážím 3,93 kg. Na svět jsem ji porodila před polednem. Bez vašich skvělých rad bych byla úplně marná! Strašně moc děkuji a budu vás všude chválit a doporučovat."</p>
+          <div class="testimonial-name">Kateřina B.</div>
         </div>
       </div>
     </div>
@@ -1270,7 +1322,7 @@ footer a:hover { color: var(--rose-pale); }
         </div>
 
         <div class="about-content fade-in">
-          <span class="tag">Moje příběh</span>
+          <span class="tag">Můj příběh</span>
           <h2>Věřím, že dobrá <span class="u2">příprava</span> mění vše</h2>
           <p>Jmenuji se Šárka Mašková a jsem porodní asistentka. Ve své práci provázím ženy a jejich partnery těhotenstvím, přípravou na porod a šestinedělím.</p>
           <p>Opakovaně jsem viděla, jaký vliv má kvalitní příprava — informovanost, porozumění vlastnímu tělu a podpora partnera pomáhají ženám prožít porod s větším klidem a jistotou. Proto se věnuji předporodní přípravě.</p>
