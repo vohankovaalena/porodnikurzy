@@ -214,7 +214,7 @@ nav {
 .hero-section {
   position: relative;
   overflow: hidden;
-  background-image: url('studio web images/hero-bg.png');
+  background-image: url('studio web images/hero-bg.webp');
   background-size: cover;
   background-position: right center;
 }
@@ -277,9 +277,17 @@ nav {
   66% { border-radius: 55% 45% 60% 40% / 40% 55% 45% 60%; }
 }
 
-.hero-blob img {
+.hero-blob picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 85%;
   aspect-ratio: 1;
+}
+
+.hero-blob img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 50%;
   display: block;
@@ -365,7 +373,7 @@ nav {
 .approach-section {
   position: relative;
   overflow: hidden;
-  background-image: url('muj_pristup_studio.png');
+  background-image: url('muj_pristup_studio.webp');
   background-size: 75%;
   background-position: 110% center;
   color: var(--white);
@@ -586,7 +594,7 @@ footer a:hover { color: var(--rose-pale); }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('o_mne_image.png');
+  background-image: url('o_mne_image.webp');
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -774,6 +782,26 @@ footer a:hover { color: var(--rose-pale); }
 .blog-detail-content li { margin-bottom: 0.4rem; }
 .blog-loading { text-align: center; padding: 5rem 1rem; color: var(--mid); }
 
+.blog-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1rem;
+  gap: 1.2rem;
+  color: var(--mid);
+  font-size: 0.9rem;
+}
+.blog-spinner__ring {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--rose-wash);
+  border-top-color: var(--rose);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
 /* ─── CONTACT PAGE ─────────────────────────── */
 .contact-grid {
   display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem;
@@ -915,7 +943,10 @@ footer a:hover { color: var(--rose-pale); }
     </div>
     <div class="hero-visual">
       <div class="hero-blob">
-        <img src="sarka_maskova.png" alt="Šárka Mašková, porodní asistentka">
+        <picture>
+          <source srcset="sarka_maskova.webp" type="image/webp">
+          <img src="sarka_maskova.png" alt="Šárka Mašková, porodní asistentka">
+        </picture>
       </div>
       <div class="hero-card" style="top:82%;right:-8%">🌿 respektující a individuální péče</div>
       <div class="hero-card" style="bottom:75%;left:-5%">💛 Příbram &amp; okolí</div>
@@ -927,22 +958,22 @@ footer a:hover { color: var(--rose-pale); }
   <section class="benefits-strip">
     <div class="benefits-grid fade-in">
       <div class="benefit-item">
-        <div class="benefit-icon"><img src="icons web studio/1.png" alt=""></div>
+        <div class="benefit-icon"><picture><source srcset="icons web studio/1.webp" type="image/webp"><img src="icons web studio/1.png" alt="" loading="lazy"></picture></div>
         <h4>Příprava na porod</h4>
         <p>Srozumitelně, krok za krokem</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon"><img src="icons web studio/2.png" alt=""></div>
+        <div class="benefit-icon"><picture><source srcset="icons web studio/2.webp" type="image/webp"><img src="icons web studio/2.png" alt="" loading="lazy"></picture></div>
         <h4>Práce s tělem a dechem</h4>
         <p>Zvládání porodní bolesti</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon"><img src="icons web studio/3.png" alt=""></div>
+        <div class="benefit-icon"><picture><source srcset="icons web studio/3.webp" type="image/webp"><img src="icons web studio/3.png" alt="" loading="lazy"></picture></div>
         <h4>Příprava partnera</h4>
         <p>Aktivní role u porodu</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon"><img src="icons web studio/4.png" alt=""></div>
+        <div class="benefit-icon"><picture><source srcset="icons web studio/4.webp" type="image/webp"><img src="icons web studio/4.png" alt="" loading="lazy"></picture></div>
         <h4>Podpora po porodu</h4>
         <p>Šestinedělí a péče o novorozence</p>
       </div>
@@ -1400,12 +1431,12 @@ footer a:hover { color: var(--rose-pale); }
       <!-- Baby photos carousel -->
       <div class="baby-carousel-wrap fade-in">
         <div class="baby-carousel" id="babyCarousel">
-          <img src="studio web images/reference1.png" alt="">
-          <img src="studio web images/reference2.png" alt="">
-          <img src="studio web images/reference3.png" alt="">
-          <img src="studio web images/reference4.png" alt="">
-          <img src="studio web images/reference5.png" alt="">
-          <img src="studio web images/reference6.png" alt="">
+          <picture><source srcset="studio web images/reference1.webp" type="image/webp"><img src="studio web images/reference1.png" alt="" loading="lazy"></picture>
+          <picture><source srcset="studio web images/reference2.webp" type="image/webp"><img src="studio web images/reference2.png" alt="" loading="lazy"></picture>
+          <picture><source srcset="studio web images/reference3.webp" type="image/webp"><img src="studio web images/reference3.png" alt="" loading="lazy"></picture>
+          <picture><source srcset="studio web images/reference4.webp" type="image/webp"><img src="studio web images/reference4.png" alt="" loading="lazy"></picture>
+          <picture><source srcset="studio web images/reference5.webp" type="image/webp"><img src="studio web images/reference5.png" alt="" loading="lazy"></picture>
+          <picture><source srcset="studio web images/reference6.webp" type="image/webp"><img src="studio web images/reference6.png" alt="" loading="lazy"></picture>
         </div>
       </div>
 
@@ -1480,68 +1511,10 @@ footer a:hover { color: var(--rose-pale); }
   <div id="blog-list-view">
   <section class="section">
     <div class="container">
-      <div class="blog-grid fade-in">
-
-        <div class="blog-card">
-          <div class="blog-img">🫁</div>
-          <div class="blog-body">
-            <span class="blog-tag-pill">Porod</span>
-            <div class="blog-meta">15. října 2025 · 4 min čtení</div>
-            <h3>Dechové techniky, které skutečně pomáhají při porodu</h3>
-            <p>Jak pracovat s dechem, aby se stal vaším spojencem — ne jen teorií z knížky.</p>
-          </div>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-img">🤰</div>
-          <div class="blog-body">
-            <span class="blog-tag-pill">Těhotenství</span>
-            <div class="blog-meta">2. října 2025 · 5 min čtení</div>
-            <h3>Bolest zad v těhotenství: příčiny a úleva</h3>
-            <p>Proč bolí záda a co s tím skutečně jde dělat. Konkrétní cviky a polohy.</p>
-          </div>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-img">💑</div>
-          <div class="blog-body">
-            <span class="blog-tag-pill">Partner</span>
-            <div class="blog-meta">20. září 2025 · 3 min čtení</div>
-            <h3>Jak se partner může připravit na porod</h3>
-            <p>Role partnera u porodu není jen „být tam". Jak být skutečnou oporou.</p>
-          </div>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-img">🌸</div>
-          <div class="blog-body">
-            <span class="blog-tag-pill">Šestinedělí</span>
-            <div class="blog-meta">5. září 2025 · 6 min čtení</div>
-            <h3>Na co se připravit v šestinedělí</h3>
-            <p>Šestinedělí bývá náročnější, než mnozí čekají. Co vás čeká a jak se připravit.</p>
-          </div>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-img">👶</div>
-          <div class="blog-body">
-            <span class="blog-tag-pill">Novorozenec</span>
-            <div class="blog-meta">18. srpna 2025 · 4 min čtení</div>
-            <h3>Základní péče o novorozence: co potřebujete vědět</h3>
-            <p>Koupání, přikládání, spánek — praktický průvodce prvními týdny.</p>
-          </div>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-img">🏥</div>
-          <div class="blog-body">
-            <span class="blog-tag-pill">Porod</span>
-            <div class="blog-meta">1. srpna 2025 · 5 min čtení</div>
-            <h3>Porodnické postupy: na co se ptát porodnice</h3>
-            <p>Jaké otázky položit porodnici předem — a proč jsou důležité.</p>
-          </div>
-        </div>
-
+      <div class="blog-grid fade-in" id="blog-cards-grid" style="display:none"></div>
+      <div class="blog-spinner" id="blog-spinner">
+        <div class="blog-spinner__ring"></div>
+        <span>Načítám články…</span>
       </div>
     </div>
   </section>
@@ -1784,7 +1757,8 @@ function _blogCardHtml(post) {
 
 async function loadBlogPosts() {
   if (blogLoaded) return;
-  const grid = document.querySelector('#page-blog .blog-grid');
+  const grid = document.getElementById('blog-cards-grid');
+  const spinner = document.getElementById('blog-spinner');
   if (!grid) return;
 
   try {
@@ -1792,16 +1766,20 @@ async function loadBlogPosts() {
       'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts?per_page=6&_fields=id,title,excerpt,date,featured_image_url',
       { mode: 'cors' }
     );
-    if (!res.ok) return;
+    if (!res.ok) throw new Error('HTTP ' + res.status);
     const posts = await res.json();
-    if (!Array.isArray(posts) || posts.length === 0) return;
+    if (!Array.isArray(posts) || posts.length === 0) throw new Error('no posts');
 
     grid.innerHTML = posts.map(_blogCardHtml).join('');
     blogLoaded = true;
+    if (spinner) spinner.style.display = 'none';
+    grid.style.display = '';
     setTimeout(initFadeIn, 50);
   } catch (e) {
-    // Keep static placeholder content on error
-    console.info('Blog API nedostupné, zobrazuji zástupný obsah.', e.message);
+    if (spinner) spinner.style.display = 'none';
+    grid.innerHTML = '<p style="color:var(--mid);padding:2rem 0">Články se nepodařilo načíst. Zkuste to prosím později.</p>';
+    grid.style.display = '';
+    console.info('Blog API nedostupné:', e.message);
   }
 }
 
