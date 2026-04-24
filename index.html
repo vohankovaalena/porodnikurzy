@@ -1937,6 +1937,10 @@ footer a:hover { color: var(--rose-pale); }
         <div class="blog-spinner__ring"></div>
         <span>Načítám články…</span>
       </div>
+      <div id="blog-fallback" style="display:none">
+        <p style="color:var(--mid);margin-bottom:2rem;font-size:0.95rem">Článek se momentálně načítá ze samostatného blogu. Pokud se nezobrazí, přejděte přímo na:</p>
+        <a href="https://blog.porodnikurzy.cz" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-bottom:3rem">Přejít na blog →</a>
+      </div>
     </div>
   </section>
 
@@ -2185,7 +2189,19 @@ function showPage(id) {
   closeDetail();
   setTimeout(initFadeIn, 100);
   setTimeout(initDrawings, 150);
-  if (id === 'blog') { hideBlogPost(); loadBlogPosts(); }
+  if (id === 'blog') {
+    hideBlogPost();
+    // reset fallback/spinner state so each visit retries
+    const fallback = document.getElementById('blog-fallback');
+    const spinner = document.getElementById('blog-spinner');
+    const grid = document.getElementById('blog-cards-grid');
+    if (!blogLoaded) {
+      if (fallback) fallback.style.display = 'none';
+      if (spinner) spinner.style.display = '';
+      if (grid) grid.style.display = 'none';
+    }
+    loadBlogPosts();
+  }
 }
 
 async function showBlogPost(postId) {
@@ -2312,8 +2328,8 @@ async function loadBlogPosts() {
   } catch (e) {
     clearTimeout(tid);
     if (spinner) spinner.style.display = 'none';
-    grid.innerHTML = '<p style="color:var(--mid);padding:2rem 0">Články se nepodařilo načíst. Zkuste to prosím později.</p>';
-    grid.style.display = '';
+    const fallback = document.getElementById('blog-fallback');
+    if (fallback) fallback.style.display = '';
     console.info('Blog API nedostupné:', e.message);
   }
 }
