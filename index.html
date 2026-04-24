@@ -2004,19 +2004,21 @@ footer a:hover { color: var(--rose-pale); }
           </div>
         </div>
 
-        <div class="contact-form fade-in">
+        <form id="contact-form" class="contact-form fade-in">
+          <input type="hidden" name="access_key" value="c92134e7-43c0-4190-b22d-bef71973cda4">
+          <input type="hidden" name="subject" value="Nová poptávka z webu porodnikurzy.cz">
           <h3 style="margin-bottom:1.5rem">Nezávazná poptávka</h3>
           <div class="form-group">
             <label>Jméno *</label>
-            <input type="text" placeholder="Jana Nováková">
+            <input type="text" name="name" placeholder="Jana Nováková" required>
           </div>
           <div class="form-group">
             <label>E-mail *</label>
-            <input type="email" placeholder="váš@email.cz">
+            <input type="email" name="email" placeholder="váš@email.cz" required>
           </div>
           <div class="form-group">
             <label>Mám zájem o</label>
-            <select>
+            <select name="service">
               <option>Individuální předporodní kurz</option>
               <option>Kurz v malé skupině</option>
               <option>Konzultaci v těhotenství</option>
@@ -2025,11 +2027,12 @@ footer a:hover { color: var(--rose-pale); }
           </div>
           <div class="form-group">
             <label>Zpráva</label>
-            <textarea placeholder="Napište mi, ve kterém týdnu těhotenství jste, kdy plánujete termín porodu, nebo se jen zeptejte na cokoliv..."></textarea>
+            <textarea name="message" placeholder="Napište mi, ve kterém týdnu těhotenství jste, kdy plánujete termín porodu, nebo se jen zeptejte na cokoliv..."></textarea>
           </div>
-          <button class="btn btn-primary" style="width:100%">Odeslat zprávu</button>
+          <div id="form-message" style="display:none;padding:0.8rem 1rem;border-radius:0.6rem;margin-bottom:1rem;font-size:0.88rem;text-align:center"></div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Odeslat zprávu</button>
           <p style="font-size:0.78rem;color:var(--light);margin-top:0.8rem;text-align:center">Odesláním souhlasíte se <a onclick="showPage('gdpr')" style="color:var(--rose-light);cursor:pointer;text-decoration:underline">zpracováním osobních údajů</a>. Odepíšu do 48 hodin.</p>
-        </div>
+        </form>
 
       </div>
     </div>
@@ -2405,6 +2408,49 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!isOpen) {
       btn.setAttribute('aria-expanded', 'true');
       answer.classList.add('is-open');
+    }
+  });
+})();
+
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var msgEl = document.getElementById('form-message');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var formData = new FormData(form);
+    var originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Odesílám\u2026';
+    submitBtn.disabled = true;
+    msgEl.style.display = 'none';
+
+    try {
+      var response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      var data = await response.json();
+      if (response.ok) {
+        msgEl.textContent = 'Zpráva odeslána! Ozvu se vám do 48 hodin.';
+        msgEl.style.background = '#f0fdf4';
+        msgEl.style.color = '#166534';
+        msgEl.style.border = '1px solid #bbf7d0';
+        msgEl.style.display = 'block';
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Chyba serveru');
+      }
+    } catch (err) {
+      msgEl.textContent = 'Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo mi napište přímo na email.';
+      msgEl.style.background = '#fff1f2';
+      msgEl.style.color = '#9f1239';
+      msgEl.style.border = '1px solid #fecdd3';
+      msgEl.style.display = 'block';
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
   });
 })();
