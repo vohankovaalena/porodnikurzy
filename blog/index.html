@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog o těhotenství, porodu a šestinedělí | Porodní kurzy Příbram</title>
+  <meta name="description" content="Blog porodní asistentky Šárky Maškové s tipy k těhotenství, porodu, šestinedělí a péči o novorozence. Praktické články pro nastávající rodiče.">
+  <link rel="canonical" href="https://porodnikurzy.cz/blog/">
+  <meta property="og:title" content="Blog o těhotenství, porodu a šestinedělí | Porodní kurzy Příbram">
+  <meta property="og:description" content="Praktické články o těhotenství, porodu, šestinedělí a péči o novorozence od porodní asistentky Šárky Maškové.">
+  <meta property="og:url" content="https://porodnikurzy.cz/blog/">
+  <meta name="twitter:title" content="Blog o těhotenství, porodu a šestinedělí | Porodní kurzy Příbram">
+  <meta name="twitter:description" content="Praktické rady pro nastávající rodiče od porodní asistentky Šárky Maškové.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="author" content="Šárka Mašková">
+  <meta name="geo.region" content="CZ-ST">
+  <meta name="geo.placename" content="Příbram, Středočeský kraj">
+  <meta name="geo.position" content="49.6947;14.0120">
+  <meta name="ICBM" content="49.6947, 14.0120">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://porodnikurzy.cz/sarka_maskova_square.png">
+  <meta property="og:image:alt" content="Šárka Mašková, porodní asistentka">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="Porodní kurzy Příbram">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://porodnikurzy.cz/sarka_maskova_square.png">
+  <meta name="twitter:image:alt" content="Šárka Mašková, porodní asistentka v Příbrami">
+  <meta name="theme-color" content="#9d1e39">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": "https://porodnikurzy.cz/blog/#blog",
+        "url": "https://porodnikurzy.cz/blog/",
+        "name": "Blog o těhotenství, porodu a šestinedělí | Porodní kurzy Příbram",
+        "description": "Blog porodní asistentky Šárky Maškové s tipy k těhotenství, porodu, šestinedělí a péči o novorozence.",
+        "publisher": {"@id": "https://porodnikurzy.cz/#studio"}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Domů", "item": "https://porodnikurzy.cz/"},
+          {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://porodnikurzy.cz/blog/"}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="/logotyp.png" alt="Logo">Porodní asistentka <span>Šárka Mašková</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Domů</a></li>
+    <li><a href="/kurzy">Kurzy</a></li>
+    <li><a href="/o-mne">O mně</a></li>
+    <li><a href="/reference">Reference</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Domů</a>
+  <a href="/kurzy">Kurzy</a>
+  <a href="/o-mne">O mně</a>
+  <a href="/reference">Reference</a>
+  <a href="/blog">Blog</a>
+  <a href="/kontakt">Kontakt</a>
+</div>
+
+<div class="page-header">
+  <span class="tag">Blog</span>
+  <h1><span class="u"><em>Tipy</em></span> a informace</h1>
+  <p>Praktické rady a informace pro nastávající maminky a páry</p>
+</div>
+
+<div id="blog-list-view">
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid fade-in" id="blog-cards-grid" style="display:none"></div>
+      <div class="blog-spinner" id="blog-spinner">
+        <div class="blog-spinner__ring"></div>
+        <span>Načítám články…</span>
+      </div>
+      <div id="blog-fallback" style="display:none">
+        <p style="color:var(--mid);margin-bottom:2rem;font-size:0.95rem">Článek se momentálně načítá ze samostatného blogu. Pokud se nezobrazí, přejděte přímo na:</p>
+        <a href="https://blog.porodnikurzy.cz" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-bottom:3rem">Přejít na blog →</a>
+      </div>
+      <div id="blog-pagination" style="display:none;text-align:center;margin-top:2rem;margin-bottom:2rem">
+        <p id="blog-count" class="blog-count"></p>
+        <button id="blog-load-more" class="btn btn-outline" onclick="loadMoreBlogPosts()">Načíst další články</button>
+      </div>
+    </div>
+  </section>
+</div><!-- end blog-list-view -->
+
+<div id="blog-detail-view" style="display:none"></div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Porodní kurzy</h3>
+      <p>Šárka Mašková — porodní asistentka<br>Předporodní příprava, konzultace a podpora v těhotenství. Příbram a okolí.</p>
+    </div>
+    <div>
+      <h4>Navigace</h4>
+      <ul>
+        <li><a href="/">Domů</a></li>
+        <li><a href="/kurzy">Kurzy</a></li>
+        <li><a href="/o-mne">O mně</a></li>
+        <li><a href="/reference">Reference</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="mailto:info@porodnikurzy.cz">info@porodnikurzy.cz</a></li>
+        <li><a href="/kontakt">Příbram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Šárka Mašková — Porodní kurzy Příbram a okolí</span>
+    <a href="/gdpr" style="color:rgba(255,255,255,0.55);text-decoration:none">Ochrana osobních údajů</a>
+    <span>porodnikurzy.cz</span>
+  </div>
+</footer>
+
+<script src="../scripts.js"></script>
+</body>
+</html>

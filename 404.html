@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stránka nenalezena — Porodní kurzy Příbram</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#9d1e39">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="/logotyp.png" alt="Logo">Porodní asistentka <span>Šárka Mašková</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Domů</a></li>
+    <li><a href="/kurzy">Kurzy</a></li>
+    <li><a href="/o-mne">O mně</a></li>
+    <li><a href="/reference">Reference</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Domů</a>
+  <a href="/kurzy">Kurzy</a>
+  <a href="/o-mne">O mně</a>
+  <a href="/reference">Reference</a>
+  <a href="/blog">Blog</a>
+  <a href="/kontakt">Kontakt</a>
+</div>
+
+<section class="section" style="min-height:calc(100vh - 68px);display:flex;align-items:center">
+  <div class="container center">
+    <span class="tag">Chyba 404</span>
+    <h1 style="font-size:clamp(3rem,8vw,6rem);color:var(--rose);margin-bottom:0.5rem">404</h1>
+    <h2 style="margin-bottom:1rem">Stránka nenalezena</h2>
+    <p style="color:var(--mid);max-width:460px;margin:0 auto 2.5rem">Omlouváme se, stránka, kterou hledáte, neexistuje nebo byla přesunuta.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="/" class="btn btn-primary">← Zpět na úvod</a>
+      <a href="/kontakt" class="btn btn-outline">Kontaktovat mě</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Porodní kurzy</h3>
+      <p>Šárka Mašková — porodní asistentka<br>Předporodní příprava, konzultace a podpora v těhotenství. Příbram a okolí.</p>
+    </div>
+    <div>
+      <h4>Navigace</h4>
+      <ul>
+        <li><a href="/">Domů</a></li>
+        <li><a href="/kurzy">Kurzy</a></li>
+        <li><a href="/o-mne">O mně</a></li>
+        <li><a href="/reference">Reference</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="mailto:info@porodnikurzy.cz">info@porodnikurzy.cz</a></li>
+        <li><a href="/kontakt">Příbram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Šárka Mašková — Porodní kurzy Příbram a okolí</span>
+    <a href="/gdpr" style="color:rgba(255,255,255,0.55);text-decoration:none">Ochrana osobních údajů</a>
+    <span>porodnikurzy.cz</span>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
