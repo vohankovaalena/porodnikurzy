@@ -3,7 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio porodních kurzů — Šárka Mašková</title>
+<title>Porodní kurzy Příbram — Šárka Mašková, porodní asistentka</title>
+
+<!-- ─── SEO ─────────────────────────────────────────────────── -->
+<meta name="description" content="Předporodní kurzy pro páry v Příbrami. Šárka Mašková, porodní asistentka — individuální kurz (4 000 Kč/pár) nebo kurz v malé skupině (3 500 Kč/pár). Příprava na porod, šestinedělí a péče o novorozence.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="Šárka Mašková">
+<link rel="canonical" href="https://porodnikurzy.cz/">
+
+<!-- ─── GEO / LOCAL SEO ──────────────────────────────────────── -->
+<meta name="geo.region" content="CZ-ST">
+<meta name="geo.placename" content="Příbram, Středočeský kraj">
+<meta name="geo.position" content="49.6947;14.0120">
+<meta name="ICBM" content="49.6947, 14.0120">
+
+<!-- ─── OPEN GRAPH ───────────────────────────────────────────── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://porodnikurzy.cz/">
+<meta property="og:title" content="Porodní kurzy Příbram — Šárka Mašková, porodní asistentka">
+<meta property="og:description" content="Předporodní kurzy pro páry v Příbrami. Příprava na porod, šestinedělí a péče o novorozence. Individuální kurz nebo kurz v malé skupině.">
+<meta property="og:image" content="https://porodnikurzy.cz/sarka_maskova_square.png">
+<meta property="og:image:alt" content="Šárka Mašková, porodní asistentka">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="Porodní kurzy Příbram">
+
+<!-- ─── TWITTER CARD ─────────────────────────────────────────── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Porodní kurzy Příbram — Šárka Mašková">
+<meta name="twitter:description" content="Předporodní kurzy pro páry v Příbrami. Příprava na porod, šestinedělí a péče o novorozence.">
+<meta name="twitter:image" content="https://porodnikurzy.cz/sarka_maskova_square.png">
+
+<!-- Theme colour -->
+<meta name="theme-color" content="#9d1e39">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -128,6 +160,14 @@ nav {
   color: var(--dark);
   cursor: pointer;
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-logo img {
+  height: 2.4rem;
+  width: auto;
+  display: block;
 }
 .nav-logo span { color: var(--rose); }
 
@@ -189,7 +229,36 @@ nav {
 /* ─── LAYOUT HELPERS ─────────────────────────── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 5vw; }
 .section { padding: 80px 0; }
+
+#page-o-mne .section {
+  background:
+    linear-gradient(rgba(253,249,248,0.80), rgba(247,238,235,0.88)),
+    url('fotky web studio 2/background_daddy.png') center/cover no-repeat;
+}
 .section-sm { padding: 50px 0; }
+
+/* Kurzy page — photo background with gradient */
+.kurzy-bg-section {
+  position: relative;
+  overflow: hidden;
+  background-image: url('fotky web studio 2/backgroud_babyfoot.png');
+  background-size: cover;
+  background-position: center center;
+}
+.kurzy-bg-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(253,249,248,0.3) 35%,
+    rgba(253,249,248,0.88) 56%,
+    #fdf9f8 72%,
+    #fdf9f8 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.kurzy-bg-section > * { position: relative; z-index: 1; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
@@ -332,6 +401,7 @@ nav {
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2px 12px rgba(157,30,57,0.15);
   padding: 10px;
+  overflow: hidden;
 }
 .benefit-icon img {
   width: 100%; height: 100%; object-fit: contain;
@@ -354,6 +424,16 @@ nav {
   padding: 2rem;
   text-align: center;
   font-size: 2rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.service-card-icon {
+  width: 72px; height: 72px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(157,30,57,0.15);
+  padding: 12px;
+  overflow: hidden;
 }
 .service-card-body { padding: 1.8rem; }
 .service-card-body h3 { margin-bottom: 0.6rem; }
@@ -375,20 +455,21 @@ nav {
   overflow: hidden;
   background-image: url('muj_pristup_studio.webp');
   background-size: 75%;
+  background-repeat: no-repeat;
   background-position: 110% center;
   color: var(--white);
-  padding: 90px 5vw;
+  padding: 30px 5vw;
 }
 .approach-section::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(to right,
-    #7a1228 0%,
-    #9d1e39 25%,
-    rgba(157,30,57,0.85) 45%,
-    rgba(157,30,57,0.3) 68%,
-    transparent 100%);
+    #9d1e39 0%,
+    #9d1e39 30%,
+    rgba(157,30,57,0.9) 50%,
+    rgba(157,30,57,0.5) 65%,
+    rgba(157,30,57,0.0) 82%);
   pointer-events: none;
   z-index: 0;
 }
@@ -724,7 +805,7 @@ footer a:hover { color: var(--rose-pale); }
 }
 .blog-body { padding: 1.4rem 1.6rem; display: flex; flex-direction: column; justify-content: center; }
 .blog-meta { font-size: 0.78rem; color: var(--light); margin-bottom: 0.4rem; }
-.blog-body h3 { font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.35; color: var(--dark); }
+.blog-body h3 { font-size: 1.35rem; margin-bottom: 0.5rem; line-height: 1.3; color: var(--dark); }
 .blog-body p { font-size: 0.88rem; color: var(--mid); margin: 0; }
 .blog-tag-pill {
   display: inline-block;
@@ -894,13 +975,259 @@ footer a:hover { color: var(--rose-pale); }
   .blog-img { width: 100%; min-width: 0; height: 180px; }
   .blog-img img { width: 100%; height: 180px; }
 }
+
+/* ─── FAQ ─────────────────────────────────── */
+.spk-faq {
+  background: #ffffff;
+  padding: 88px 24px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.spk-faq *, .spk-faq *::before, .spk-faq *::after { box-sizing: inherit; }
+.spk-faq__inner { max-width: 760px; margin: 0 auto; }
+.spk-faq__header { text-align: center; margin-bottom: 60px; }
+.spk-faq__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9d1e39;
+  margin-bottom: 16px;
+}
+.spk-faq__title {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 16px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.spk-faq__title::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: #9d1e39;
+  margin: 18px auto 0;
+  border-radius: 2px;
+}
+.spk-faq__subtitle { font-size: 16px; color: #7a6060; margin: 0; line-height: 1.65; }
+.spk-faq__list { border-top: 1px solid #ddbbb2; }
+.spk-faq__item { border-bottom: 1px solid #ddbbb2; }
+.spk-faq__q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 1.45;
+  transition: color 0.2s ease;
+  font-family: inherit;
+}
+.spk-faq__q:hover { color: #9d1e39; }
+.spk-faq__q[aria-expanded="true"] { color: #9d1e39; }
+.spk-faq__icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid #cd9c8f;
+  border-radius: 50%;
+  position: relative;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.3s ease;
+}
+.spk-faq__icon::before,
+.spk-faq__icon::after {
+  content: '';
+  position: absolute;
+  background: #9d1e39;
+  border-radius: 2px;
+  top: 50%; left: 50%;
+  transition: background 0.25s ease;
+}
+.spk-faq__icon::before { width: 12px; height: 1.5px; transform: translate(-50%, -50%); }
+.spk-faq__icon::after  { width: 1.5px; height: 12px; transform: translate(-50%, -50%); }
+.spk-faq__q[aria-expanded="true"] .spk-faq__icon {
+  background: #9d1e39;
+  border-color: #9d1e39;
+  transform: rotate(45deg);
+}
+.spk-faq__q[aria-expanded="true"] .spk-faq__icon::before,
+.spk-faq__q[aria-expanded="true"] .spk-faq__icon::after { background: #ffffff; }
+.spk-faq__a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.38s ease, padding-bottom 0.25s ease;
+  padding-bottom: 0;
+}
+.spk-faq__a.is-open { max-height: 500px; padding-bottom: 26px; }
+.spk-faq__a p { font-size: 15px; line-height: 1.8; color: #5a4a4a; margin: 0 0 12px; }
+.spk-faq__a p:last-child { margin-bottom: 0; }
+.spk-faq__a a { color: #9d1e39; text-decoration: underline; text-underline-offset: 3px; transition: color 0.15s ease; }
+.spk-faq__a a:hover { color: #7a1730; }
+.spk-faq__a strong { color: #333333; font-weight: 600; }
+.spk-faq__cta {
+  text-align: center;
+  margin-top: 56px;
+  padding: 40px 36px;
+  background: #ddbbb2;
+  border-radius: 3px;
+}
+.spk-faq__cta p { font-size: 15px; color: #3d1c1c; margin: 0 0 22px; line-height: 1.65; }
+.spk-faq__cta-btn {
+  display: inline-block;
+  background: #9d1e39;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  padding: 14px 34px;
+  border-radius: 2px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.spk-faq__cta-btn:hover { background: #7a1730; transform: translateY(-1px); }
+@media (max-width: 600px) {
+  .spk-faq { padding: 60px 20px; }
+  .spk-faq__q { font-size: 15px; padding: 18px 0; }
+  .spk-faq__cta { padding: 30px 20px; }
+}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Kdy je nejlepší čas začít s předporodním kurzem?","acceptedAnswer":{"@type":"Answer","text":"Kurzy probíhají v průběhu celého roku. Doporučuji přihlásit se přibližně kolem 30.–34. týdne těhotenství. Kurz se skládá ze 3 setkání po přibližně 90 minutách, celkem 5–6 hodin."}},
+    {"@type":"Question","name":"Mám plánovaný císařský řez — má pro mě kurz smysl?","acceptedAnswer":{"@type":"Answer","text":"Rozhodně ano. Plánovaná sekce nevylučuje žádnou část přípravy. V kurzu se věnujeme tomu, co vás při císařském řezu čeká, jak probíhá první kontakt s miminkem na sále a jak co nejlépe nastartovat šestinedělí."}},
+    {"@type":"Question","name":"Mohu přijít s partnerem?","acceptedAnswer":{"@type":"Answer","text":"Ano, a velmi to doporučuji. Příprava partnera na aktivní roli u porodu je přímo součástí kurzu. Cena kurzu je vždy uváděna za pár — individuální kurz 4 000 Kč, kurz v malé skupině (max. 2 páry) 3 500 Kč."}},
+    {"@type":"Question","name":"Probírá se na kurzu kojení?","acceptedAnswer":{"@type":"Answer","text":"Ano, kojení a péče o novorozence jsou součástí každého kurzu. Probereme správné přikládání, polohy při kojení, jak poznat, že miminko dostává dost, a na co se připravit v prvních dnech."}},
+    {"@type":"Question","name":"Jaký je rozdíl mezi individuálním kurzem a kurzem v malé skupině?","acceptedAnswer":{"@type":"Answer","text":"Individuální kurz (4 000 Kč / pár) je zcela přizpůsoben vám. Kurz v malé skupině (3 500 Kč / pár) probíhá v uzavřené skupině maximálně dvou párů se stejným obsahem."}},
+    {"@type":"Question","name":"Co přesně kurz zahrnuje?","acceptedAnswer":{"@type":"Answer","text":"Kurz pokrývá celou přípravu: průběh porodu, zvládání bolesti, úlevové polohy, práci s dechem, porodnické postupy, přípravu partnera, šestinedělí, základní péči o novorozence a prostor pro individuální dotazy."}},
+    {"@type":"Question","name":"Kde kurzy probíhají?","acceptedAnswer":{"@type":"Answer","text":"Kurzy probíhají u mě doma v klidném prostředí. Pokud bydlíte dál nebo momentálně nemůžete cestovat, napište mi na info@studioporodnichkurzu.cz — ráda najdeme řešení."}}
+  ]
+}
+</script>
+
+<!-- ─── STRUCTURED DATA: Organization · Person · Courses ─────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "EducationalOrganization"],
+      "@id": "https://porodnikurzy.cz/#studio",
+      "name": "Porodní kurzy Příbram",
+      "alternateName": "Porodní kurzy Šárky Maškové",
+      "description": "Předporodní kurzy pro páry v Příbrami. Porodní asistentka Šárka Mašková provází nastávající rodiče přípravou na porod, šestinedělím a péčí o novorozence.",
+      "url": "https://porodnikurzy.cz/",
+      "email": "info@studioporodnichkurzu.cz",
+      "priceRange": "3 500–4 000 Kč",
+      "currenciesAccepted": "CZK",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Příbram",
+        "addressRegion": "Středočeský kraj",
+        "addressCountry": "CZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.6947,
+        "longitude": 14.0120
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Příbram"},
+        {"@type": "AdministrativeArea", "name": "Středočeský kraj"}
+      ],
+      "founder": {"@id": "https://porodnikurzy.cz/#sarka"},
+      "employee": {"@id": "https://porodnikurzy.cz/#sarka"}
+    },
+    {
+      "@type": "Person",
+      "@id": "https://porodnikurzy.cz/#sarka",
+      "name": "Šárka Mašková",
+      "jobTitle": "Porodní asistentka",
+      "description": "Porodní asistentka s dlouholetou praxí v porodnickém prostředí. Provází ženy a jejich partnery těhotenstvím, přípravou na porod a šestinedělím.",
+      "email": "info@studioporodnichkurzu.cz",
+      "url": "https://porodnikurzy.cz/",
+      "image": "https://porodnikurzy.cz/sarka_maskova_square.png",
+      "worksFor": {"@id": "https://porodnikurzy.cz/#studio"},
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Příbram",
+        "addressCountry": "CZ"
+      }
+    },
+    {
+      "@type": "Course",
+      "@id": "https://porodnikurzy.cz/#kurz-individualni",
+      "name": "Individuální předporodní kurz",
+      "description": "Předporodní kurz na míru pro jeden pár. Tři setkání po 90 minutách (celkem 5–6 hodin). Průběh porodu, zvládání bolesti, úlevové polohy, práce s dechem, příprava partnera, šestinedělí a péče o novorozence.",
+      "provider": {"@id": "https://porodnikurzy.cz/#studio"},
+      "instructor": {"@id": "https://porodnikurzy.cz/#sarka"},
+      "inLanguage": "cs",
+      "offers": {
+        "@type": "Offer",
+        "price": "4000",
+        "priceCurrency": "CZK",
+        "availability": "https://schema.org/InStock",
+        "description": "Cena za pár"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "Příbram",
+          "address": {"@type": "PostalAddress", "addressLocality": "Příbram", "addressCountry": "CZ"}
+        }
+      }
+    },
+    {
+      "@type": "Course",
+      "@id": "https://porodnikurzy.cz/#kurz-skupinovy",
+      "name": "Předporodní kurz v malé skupině",
+      "description": "Předporodní kurz v uzavřené skupině maximálně dvou párů. Stejný obsah jako individuální kurz, navíc možnost sdílet zkušenosti s dalšími nastávajícími rodiči.",
+      "provider": {"@id": "https://porodnikurzy.cz/#studio"},
+      "instructor": {"@id": "https://porodnikurzy.cz/#sarka"},
+      "inLanguage": "cs",
+      "offers": {
+        "@type": "Offer",
+        "price": "3500",
+        "priceCurrency": "CZK",
+        "availability": "https://schema.org/InStock",
+        "description": "Cena za pár, max. 2 páry"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "Příbram",
+          "address": {"@type": "PostalAddress", "addressLocality": "Příbram", "addressCountry": "CZ"}
+        }
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" onclick="showPage('home')">Studio <span>porodních kurzů</span></div>
+  <div class="nav-logo" onclick="showPage('home')"><img src="logotyp.png" alt="Logo">Porodní asistentka <span>Šárka Mašková</span></div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')" class="active">Domů</a></li>
     <li><a onclick="showPage('kurzy')">Kurzy</a></li>
@@ -990,7 +1317,7 @@ footer a:hover { color: var(--rose-pale); }
       <div class="grid-3 fade-in">
 
         <div class="service-card">
-          <div class="service-card-top">🌿</div>
+          <div class="service-card-top"><div class="service-card-icon"><picture><source srcset="icons web studio/5.webp" type="image/webp"><img src="icons web studio/5.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:contain"></picture></div></div>
           <div class="service-card-body">
             <span class="price-tag">4 000 Kč / pár</span>
             <h3>Individuální kurz</h3>
@@ -1000,7 +1327,7 @@ footer a:hover { color: var(--rose-pale); }
         </div>
 
         <div class="service-card">
-          <div class="service-card-top">🌿</div>
+          <div class="service-card-top"><div class="service-card-icon"><picture><source srcset="icons web studio/6.webp" type="image/webp"><img src="icons web studio/6.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:contain"></picture></div></div>
           <div class="service-card-body">
             <span class="price-tag">3 500 Kč / pár</span>
             <h3>Kurz v malé skupině</h3>
@@ -1010,7 +1337,7 @@ footer a:hover { color: var(--rose-pale); }
         </div>
 
         <div class="service-card">
-          <div class="service-card-top">🌿</div>
+          <div class="service-card-top"><div class="service-card-icon"><picture><source srcset="icons web studio/7.webp" type="image/webp"><img src="icons web studio/7.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:contain"></picture></div></div>
           <div class="service-card-body">
             <span class="price-tag">Cena dle dohody</span>
             <h3>Konzultace</h3>
@@ -1028,7 +1355,7 @@ footer a:hover { color: var(--rose-pale); }
     <div class="approach-inner">
       <div>
         <span class="tag">Můj přístup</span>
-        <h2>Každá žena si zaslouží <span class="u">jistotu a klid</span></h2>
+        <h2>Každá žena si zaslouží <span class="u"><em>jistotu a klid</em></span></h2>
         <p>Ve své praxi propojuji odborné znalosti s respektujícím a individuálním přístupem. Nejde jen o informace — jde o to, abyste se cítili připraveni a sebejistí.</p>
         <div class="approach-points">
           <div class="approach-point">
@@ -1049,7 +1376,7 @@ footer a:hover { color: var(--rose-pale); }
         </div>
       </div>
       <div class="approach-quote">
-        <p>Věřím, že žena v těhotenství potřebuje především klid, pocit bezpečí a srozumitelné informace.</p>
+        <p>Věřím, že žena v těhotenství potřebuje především klid, pocit bezpečí a srozumitelné informace. Mou snahou je, aby se nastávající rodiče cítili jistě, rozuměli tomu, co se děje, a mohli se rozhodovat s důvěrou ve své schopnosti.</p>
         <cite>— Šárka Mašková, porodní asistentka</cite>
       </div>
     </div>
@@ -1085,6 +1412,100 @@ footer a:hover { color: var(--rose-pale); }
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="spk-faq" id="faq" aria-label="Časté otázky">
+    <div class="spk-faq__inner">
+
+      <div class="spk-faq__header">
+        <span class="spk-faq__eyebrow">Časté otázky</span>
+        <h2 class="spk-faq__title">Odpovědi, které hledáte</h2>
+        <p class="spk-faq__subtitle">Nejčastější dotazy nastávajících maminek před přihlášením na kurz.</p>
+      </div>
+
+      <div class="spk-faq__list">
+
+        <div class="spk-faq__item">
+          <button class="spk-faq__q" aria-expanded="false">
+            <span>Kdy je nejlepší čas začít s předporodním kurzem?</span>
+            <span class="spk-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="spk-faq__a">
+            <p>Kurzy probíhají v průběhu celého roku. Doporučuji přihlásit se přibližně kolem <strong>30.–34. týdne těhotenství</strong> — máte tehdy dost energie na aktivní účast a zároveň máme čas projít vše v klidu, bez zbytečného spěchu.</p>
+            <p>Kurz se skládá ze 3 setkání po přibližně 90 minutách (celkem 5–6 hodin). <a onclick="showPage('kontakt')" style="cursor:pointer">Napište mi</a> a společně vybereme termín, který vám vyhovuje.</p>
+          </div>
+        </div>
+
+        <div class="spk-faq__item">
+          <button class="spk-faq__q" aria-expanded="false">
+            <span>Mám plánovaný císařský řez — má pro mě kurz smysl?</span>
+            <span class="spk-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="spk-faq__a">
+            <p>Rozhodně ano. Plánovaná sekce nevylučuje účast na předporodním kurzu — naopak. V kurzu se věnujeme tomu, co vás při císařském řezu čeká, jak probíhá první kontakt s miminkem na sále a jak co nejlépe nastartovat šestinedělí.</p>
+            <p>Velká část kurzu — péče o novorozence, kojení, šestinedělí a příprava partnera — je pro maminky po sekci stejně důležitá jako pro ty, které rodí přirozeně. Obsah přizpůsobím přímo vám.</p>
+          </div>
+        </div>
+
+        <div class="spk-faq__item">
+          <button class="spk-faq__q" aria-expanded="false">
+            <span>Mohu přijít s partnerem?</span>
+            <span class="spk-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="spk-faq__a">
+            <p>Ano, a velmi to doporučuji. Příprava partnera na aktivní roli u porodu je přímo součástí kurzu. Partner se naučí, jak vás efektivně podpořit při kontrakcích, co ho čeká na porodním sále a jak se aktivně zapojit do prvních dní doma.</p>
+            <p>Cena kurzu je vždy uváděna <strong>za pár</strong> — individuální kurz <strong>4 000 Kč</strong>, kurz v malé skupině (max. 2 páry) <strong>3 500 Kč</strong>.</p>
+          </div>
+        </div>
+
+        <div class="spk-faq__item">
+          <button class="spk-faq__q" aria-expanded="false">
+            <span>Probírá se na kurzu kojení?</span>
+            <span class="spk-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="spk-faq__a">
+            <p>Ano, kojení a péče o novorozence jsou součástí každého kurzu. Probereme správné přikládání, polohy při kojení, jak poznat, že miminko dostává dost, a na co se připravit v prvních dnech.</p>
+            <p>Vše přizpůsobuji vaší konkrétní situaci a otázkám, které přinesete vy. Prostor pro individuální dotazy je součástí každého setkání.</p>
+          </div>
+        </div>
+
+        <div class="spk-faq__item">
+          <button class="spk-faq__q" aria-expanded="false">
+            <span>Jaký je rozdíl mezi individuálním kurzem a kurzem v malé skupině?</span>
+            <span class="spk-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="spk-faq__a">
+            <p><strong>Individuální kurz (4 000 Kč / pár)</strong> je zcela přizpůsoben vám — vašemu těhotenství, otázkám a tempu. Probíhá v soukromí, bez spěchu, s maximálním prostorem pro osobní témata.</p>
+            <p><strong>Kurz v malé skupině (3 500 Kč / pár)</strong> probíhá v uzavřené skupině maximálně dvou párů. Obsah je totožný, navíc získáte možnost sdílet zkušenosti s dalšími nastávajícími rodiči. Nevíte si rady? <a onclick="showPage('kontakt')" style="cursor:pointer">Napište mi</a> — ráda poradím.</p>
+          </div>
+        </div>
+
+        <div class="spk-faq__item">
+          <button class="spk-faq__q" aria-expanded="false">
+            <span>Co přesně kurz zahrnuje?</span>
+            <span class="spk-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="spk-faq__a">
+            <p>Kurz pokrývá celou přípravu na porod a první období s miminkem: orientaci v průběhu porodu, praktické zvládání porodní bolesti, úlevové polohy, práci s dechem a porodnické postupy.</p>
+            <p>Dále probíráme přípravu partnera, šestinedělí, základní péči o novorozence a prostor pro vaše dotazy. Přístup je vždy srozumitelný a respektující — žádné zbytečné odbornosti, jen to, co skutečně potřebujete vědět.</p>
+          </div>
+        </div>
+
+        <div class="spk-faq__item">
+          <button class="spk-faq__q" aria-expanded="false">
+            <span>Kde kurzy probíhají? Jste i mimo Příbram?</span>
+            <span class="spk-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="spk-faq__a">
+            <p>Kurzy probíhají u mě doma v klidném prostředí.</p>
+            <p>Bydlíte dál nebo nemůžete cestovat? Napište mi na <a href="mailto:info@studioporodnichkurzu.cz">info@studioporodnichkurzu.cz</a> — ráda najdeme řešení, které vám bude vyhovovat.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-banner fade-in">
     <div class="container">
@@ -1097,7 +1518,7 @@ footer a:hover { color: var(--rose-pale); }
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <h3>Studio porodních kurzů</h3>
+        <h3>Porodní kurzy</h3>
         <p>Šárka Mašková — porodní asistentka<br>Předporodní příprava, konzultace a podpora v těhotenství. Příbram a okolí.</p>
       </div>
       <div>
@@ -1115,7 +1536,6 @@ footer a:hover { color: var(--rose-pale); }
         <h4>Kontakt</h4>
         <ul>
           <li><a href="#">info@studioporodnichkurzu.cz</a></li>
-          <li><a href="#">+420 xxx xxx xxx</a></li>
           <li><a href="#">Příbram</a></li>
         </ul>
       </div>
@@ -1136,18 +1556,18 @@ footer a:hover { color: var(--rose-pale); }
 
   <div class="page-header">
     <span class="tag">Moje služby</span>
-    <h1>Kurzy a <span class="u">konzultace</span></h1>
+    <h1>Kurzy a <span class="u"><em>konzultace</em></span></h1>
     <p>Individuální příprava na porod, šestinedělí a péči o novorozence. Vyberte si formu, která vám vyhovuje.</p>
   </div>
 
-  <section class="section">
+  <section class="section kurzy-bg-section">
     <div class="container">
 
       <div class="courses-grid fade-in" id="coursesGrid">
 
         <!-- Card 1 -->
         <div class="card" style="cursor:pointer" onclick="openCourse('individual')">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
+          <div style="margin-bottom:1rem;"><picture><source srcset="icons web studio/5.webp" type="image/webp"><img src="icons web studio/5.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></picture></div>
           <span class="price-tag">4 000 Kč / pár</span>
           <h3 style="margin-bottom:0.6rem">Individuální kurz</h3>
           <p style="font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem">3 setkání · cca 90 min · celkem 5–6 hodin</p>
@@ -1157,7 +1577,7 @@ footer a:hover { color: var(--rose-pale); }
 
         <!-- Card 2 -->
         <div class="card" style="cursor:pointer" onclick="openCourse('skupina')">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
+          <div style="margin-bottom:1rem;"><picture><source srcset="icons web studio/6.webp" type="image/webp"><img src="icons web studio/6.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></picture></div>
           <span class="price-tag">3 500 Kč / pár</span>
           <h3 style="margin-bottom:0.6rem">Kurz v malé skupině</h3>
           <p style="font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem">3 setkání · cca 90 min · max. 2 páry</p>
@@ -1167,7 +1587,7 @@ footer a:hover { color: var(--rose-pale); }
 
         <!-- Card 3 -->
         <div class="card" style="cursor:pointer" onclick="openCourse('konzultace')">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
+          <div style="margin-bottom:1rem;"><picture><source srcset="icons web studio/7.webp" type="image/webp"><img src="icons web studio/7.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></picture></div>
           <span class="price-tag">Cena dle dohody</span>
           <h3 style="margin-bottom:0.6rem">Konzultace</h3>
           <p style="font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem">Délka dle potřeby · individuální</p>
@@ -1286,7 +1706,7 @@ footer a:hover { color: var(--rose-pale); }
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <h3>Studio porodních kurzů</h3>
+        <h3>Porodní kurzy</h3>
         <p>Šárka Mašková — porodní asistentka<br>Příbram a okolí.</p>
       </div>
       <div>
@@ -1317,7 +1737,7 @@ footer a:hover { color: var(--rose-pale); }
 
   <div class="page-header">
     <span class="tag">O mně</span>
-    <h1><span class="u2">Šárka Mašková</span></h1>
+    <h1><span class="u2"><em>Šárka Mašková</em></span></h1>
     <p>Porodní asistentka s dlouholetou praxí v porodnickém prostředí</p>
   </div>
 
@@ -1327,34 +1747,17 @@ footer a:hover { color: var(--rose-pale); }
 
         <div class="about-portrait fade-in">
           <div class="portrait-frame">
-            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="30" r="22" fill="#9d1e39"/>
-              <path d="M10 110 C10 75 90 75 90 110" fill="#9d1e39"/>
-            </svg>
+            <img src="sarka_maskova_square.png" alt="Šárka Mašková, porodní asistentka" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
             <div class="portrait-overlay">
               <h4>Šárka Mašková</h4>
               <p>Porodní asistentka · Příbram</p>
-            </div>
-          </div>
-
-          <div class="card" style="margin-top:1.5rem">
-            <div style="display:flex;gap:2rem;text-align:center;justify-content:center;">
-              <div>
-                <div style="font-size:1.8rem;font-weight:300;font-family:'Cormorant Garamond',serif;color:var(--rose)">100+</div>
-                <div style="font-size:0.8rem;color:var(--mid)">spokojených párů</div>
-              </div>
-              <div style="width:1px;background:rgba(157,30,57,0.2)"></div>
-              <div>
-                <div style="font-size:1.8rem;font-weight:300;font-family:'Cormorant Garamond',serif;color:var(--rose)">5★</div>
-                <div style="font-size:0.8rem;color:var(--mid)">průměrné hodnocení</div>
-              </div>
             </div>
           </div>
         </div>
 
         <div class="about-content fade-in">
           <span class="tag">Můj příběh</span>
-          <h2>Věřím, že dobrá <span class="u2">příprava</span> mění vše</h2>
+          <h2>Věřím, že dobrá <span class="u2"><em>příprava</em></span> mění vše</h2>
           <p>Jmenuji se Šárka Mašková a jsem porodní asistentka. Ve své práci provázím ženy a jejich partnery těhotenstvím, přípravou na porod a šestinedělím.</p>
           <p>Opakovaně jsem viděla, jaký vliv má kvalitní příprava — informovanost, porozumění vlastnímu tělu a podpora partnera pomáhají ženám prožít porod s větším klidem a jistotou. Proto se věnuji předporodní přípravě.</p>
 
@@ -1379,7 +1782,7 @@ footer a:hover { color: var(--rose-pale); }
           <h3 style="margin-bottom:1.2rem">Vzdělání a praxe</h3>
           <div class="edu-item">
             <h4>Obor porodní asistence</h4>
-            <p>Odborné studium · doplňte školu nebo rok</p>
+            <p>Odborné studium · doplnit školu</p>
           </div>
           <div class="edu-item">
             <h4>Dlouholetá praxe v porodnickém prostředí</h4>
@@ -1400,7 +1803,7 @@ footer a:hover { color: var(--rose-pale); }
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand"><h3>Studio porodních kurzů</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
+      <div class="footer-brand"><h3>Porodní kurzy</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
       <div><h4>Navigace</h4><ul>
         <li><a onclick="showPage('home')">Domů</a></li>
         <li><a onclick="showPage('kurzy')">Kurzy</a></li>
@@ -1421,7 +1824,7 @@ footer a:hover { color: var(--rose-pale); }
 
   <div class="page-header">
     <span class="tag">Reference</span>
-    <h1>Co říkají <span class="enc">maminky</span></h1>
+    <h1>Co říkají <span class="enc"><em>maminky</em></span></h1>
     <p>Zpětná vazba od maminek, které prošly mými kurzy</p>
   </div>
 
@@ -1483,7 +1886,7 @@ footer a:hover { color: var(--rose-pale); }
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand"><h3>Studio porodních kurzů</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
+      <div class="footer-brand"><h3>Porodní kurzy</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
       <div><h4>Navigace</h4><ul>
         <li><a onclick="showPage('home')">Domů</a></li>
         <li><a onclick="showPage('kurzy')">Kurzy</a></li>
@@ -1504,7 +1907,7 @@ footer a:hover { color: var(--rose-pale); }
 
   <div class="page-header">
     <span class="tag">Blog</span>
-    <h1><span class="u">Tipy</span> a informace</h1>
+    <h1><span class="u"><em>Tipy</em></span> a informace</h1>
     <p>Praktické rady a informace pro nastávající maminky a páry</p>
   </div>
 
@@ -1519,25 +1922,13 @@ footer a:hover { color: var(--rose-pale); }
     </div>
   </section>
 
-  <!-- Newsletter -->
-  <section class="section-sm" style="background:var(--rose-wash)">
-    <div class="container center fade-in">
-      <span class="tag">Newsletter</span>
-      <h2 style="margin-bottom:0.8rem">Tipy do e-mailu</h2>
-      <p style="color:var(--mid);margin-bottom:2rem;max-width:400px;margin-left:auto;margin-right:auto">Přihlaste se k odběru a dostávejte praktické rady přímo do e-mailu.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;max-width:420px;margin:0 auto">
-        <input type="email" placeholder="váš@email.cz" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1.5px solid rgba(157,30,57,0.3);border-radius:2rem;background:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none">
-        <button class="btn btn-primary">Přihlásit se</button>
-      </div>
-    </div>
-  </section>
   </div><!-- end blog-list-view -->
 
   <div id="blog-detail-view" style="display:none"></div>
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand"><h3>Studio porodních kurzů</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
+      <div class="footer-brand"><h3>Porodní kurzy</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
       <div><h4>Navigace</h4><ul>
         <li><a onclick="showPage('home')">Domů</a></li>
         <li><a onclick="showPage('kurzy')">Kurzy</a></li>
@@ -1558,7 +1949,7 @@ footer a:hover { color: var(--rose-pale); }
 
   <div class="page-header">
     <span class="tag">Kontakt</span>
-    <h1><span class="u2">Napište</span> mi</h1>
+    <h1><span class="u2"><em>Napište</em></span> mi</h1>
     <p>Ráda vám sdělím aktuální termíny a pomohu vybrat vhodnou formu přípravy.</p>
   </div>
 
@@ -1569,7 +1960,7 @@ footer a:hover { color: var(--rose-pale); }
         <div class="contact-info">
           <div>
             <span class="tag">Kde mě najdete</span>
-            <h2 style="margin-bottom:1.5rem">Těším se <span class="u">na vás</span></h2>
+            <h2 style="margin-bottom:1.5rem">Těším se <span class="u"><em>na vás</em></span></h2>
           </div>
 
           <div class="contact-item">
@@ -1577,12 +1968,8 @@ footer a:hover { color: var(--rose-pale); }
             <div><strong>E-mail</strong><p>info@studioporodnichkurzu.cz</p></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div><strong>Telefon</strong><p>+420 xxx xxx xxx</p></div>
-          </div>
-          <div class="contact-item">
             <div class="contact-icon">📍</div>
-            <div><strong>Místo setkání</strong><p>Příbram a okolí</p></div>
+            <div><strong>Místo setkání</strong><p>u mě doma, kousek od Příbrami</p></div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">🕐</div>
@@ -1597,15 +1984,9 @@ footer a:hover { color: var(--rose-pale); }
 
         <div class="contact-form fade-in">
           <h3 style="margin-bottom:1.5rem">Nezávazná poptávka</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Jméno *</label>
-              <input type="text" placeholder="Jana Nováková">
-            </div>
-            <div class="form-group">
-              <label>Telefon</label>
-              <input type="tel" placeholder="+420 ...">
-            </div>
+          <div class="form-group">
+            <label>Jméno *</label>
+            <input type="text" placeholder="Jana Nováková">
           </div>
           <div class="form-group">
             <label>E-mail *</label>
@@ -1634,7 +2015,7 @@ footer a:hover { color: var(--rose-pale); }
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand"><h3>Studio porodních kurzů</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
+      <div class="footer-brand"><h3>Porodní kurzy</h3><p>Šárka Mašková — porodní asistentka · Příbram</p></div>
       <div><h4>Navigace</h4><ul>
         <li><a onclick="showPage('home')">Domů</a></li>
         <li><a onclick="showPage('kurzy')">Kurzy</a></li>
@@ -1694,13 +2075,16 @@ async function showBlogPost(postId) {
       <div class="blog-detail-header">
         <div class="container">
           <button onclick="hideBlogPost()" style="background:rgba(157,30,57,0.1);border:none;color:var(--rose);padding:0.4rem 1.2rem;border-radius:2rem;cursor:pointer;font-size:0.82rem;margin-bottom:1.5rem;font-family:'DM Sans',sans-serif">← Zpět na blog</button>
-          <div class="blog-meta">${date}</div>
           <h1>${title}</h1>
         </div>
       </div>
       <div class="blog-detail-body">
         ${heroImg ? `<div class="blog-detail-body-img">${heroImg}</div>` : ''}
         <div class="blog-detail-content">${content}</div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(157,30,57,0.12)">
+          <button onclick="hideBlogPost()" class="btn btn-outline">← Zpět na blog</button>
+          <button onclick="hideBlogPost();showPage('kontakt')" class="btn btn-primary">Mám víc dotazů</button>
+        </div>
       </div>
     `;
   } catch (e) {
@@ -1748,7 +2132,6 @@ function _blogCardHtml(post) {
   return `<div class="blog-card" onclick="showBlogPost(${Number(id)})" style="cursor:pointer">
     ${imgHtml}
     <div class="blog-body">
-      <div class="blog-meta">${date}</div>
       <h3>${title}</h3>
       <p>${excerpt.slice(0, 140)}${excerpt.length > 140 ? '…' : ''}</p>
     </div>
@@ -1838,6 +2221,25 @@ window.addEventListener('DOMContentLoaded', () => {
     carousel.innerHTML += clone;
   }
 });
+</script>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.spk-faq__q');
+    if (!btn) return;
+    var isOpen = btn.getAttribute('aria-expanded') === 'true';
+    var answer = btn.nextElementSibling;
+    document.querySelectorAll('.spk-faq__q').forEach(function (b) {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('is-open');
+    });
+    if (!isOpen) {
+      btn.setAttribute('aria-expanded', 'true');
+      answer.classList.add('is-open');
+    }
+  });
+})();
 </script>
 </body>
 </html>
