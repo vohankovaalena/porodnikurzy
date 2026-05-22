@@ -176,7 +176,7 @@ async function showBlogPost(postId) {
   var tid = setTimeout(function () { ctrl.abort(); }, 10000);
   try {
     var res = await fetch(
-      'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts/' + Number(postId) + '?_fields=id,title,content,date,_embedded&_embed=wp:featuredmedia',
+      'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts/' + Number(postId) + '?_embed=wp:featuredmedia',
       { mode: 'cors', signal: ctrl.signal }
     );
     clearTimeout(tid);
@@ -232,7 +232,7 @@ async function loadBlogPosts() {
   var tid = setTimeout(function () { ctrl.abort(); }, 10000);
   try {
     var res = await fetch(
-      'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts?per_page=6&page=1&_fields=id,title,excerpt,date,_embedded&_embed=wp:featuredmedia',
+      'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts?per_page=6&page=1&_embed=wp:featuredmedia',
       { mode: 'cors', signal: ctrl.signal }
     );
     clearTimeout(tid);
@@ -270,7 +270,7 @@ async function loadMoreBlogPosts() {
   var tid = setTimeout(function () { ctrl.abort(); }, 10000);
   try {
     var res = await fetch(
-      'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts?per_page=6&page=' + nextPage + '&_fields=id,title,excerpt,date,_embedded&_embed=wp:featuredmedia',
+      'https://blog.porodnikurzy.cz/wp-json/wp/v2/posts?per_page=6&page=' + nextPage + '&_embed=wp:featuredmedia',
       { mode: 'cors', signal: ctrl.signal }
     );
     clearTimeout(tid);
