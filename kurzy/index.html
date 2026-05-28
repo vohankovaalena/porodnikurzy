@@ -47,6 +47,7 @@
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Příbram",
+          "postalCode": "261 01",
           "addressRegion": "Středočeský kraj",
           "addressCountry": "CZ"
         },
@@ -60,7 +61,14 @@
           {"@type": "AdministrativeArea", "name": "Středočeský kraj"}
         ],
         "founder": {"@id": "https://porodnikurzy.cz/#sarka"},
-        "employee": {"@id": "https://porodnikurzy.cz/#sarka"}
+        "employee": {"@id": "https://porodnikurzy.cz/#sarka"},
+        "telephone": "+420723475559",
+        "image": "https://porodnikurzy.cz/sarka_maskova_square.png",
+        "hasMap": "https://maps.google.com/maps?q=P%C5%99%C3%ADbram,+%C4%8CR",
+        "sameAs": [
+          "https://www.instagram.com/studio_porodnich_kurzu/",
+          "https://www.facebook.com/sarka.pregnancy.care"
+        ]
       },
       {
         "@type": "Person",
@@ -72,9 +80,15 @@
         "url": "https://porodnikurzy.cz/",
         "image": "https://porodnikurzy.cz/sarka_maskova_square.png",
         "worksFor": {"@id": "https://porodnikurzy.cz/#studio"},
+        "telephone": "+420723475559",
+        "sameAs": [
+          "https://www.instagram.com/studio_porodnich_kurzu/",
+          "https://www.facebook.com/sarka.pregnancy.care"
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Příbram",
+          "postalCode": "261 01",
           "addressCountry": "CZ"
         }
       },
@@ -192,43 +206,50 @@
     <div class="courses-grid fade-in" id="coursesGrid">
 
       <!-- Card 1 -->
-      <div class="card" style="cursor:pointer" onclick="openCourse('individual')">
+      <div class="card">
         <div style="margin-bottom:1rem;"><picture><source srcset="/icons web studio/5.webp" type="image/webp"><img src="/icons web studio/5.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></div>
-        <span class="price-tag">4 000 Kč / pár</span>
-        <h3 style="margin-bottom:0.6rem">Individuální kurz</h3>
-        <p style="font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem">3 setkání · cca 90 min · celkem 5–6 hodin</p>
-        <p style="font-size:0.9rem;color:var(--mid)">Příprava přizpůsobená výhradně vám. Maximální soukromí, váš vlastní čas a prostor pro všechna vaše témata.</p>
-        <div style="margin-top:1.5rem"><span style="color:var(--rose);font-size:0.85rem;font-weight:500">Zobrazit detail →</span></div>
+        <h3 style="margin-bottom:0.6rem">Kurzy společně s partnerem</h3>
+        <p style="font-size:0.9rem;color:var(--mid);margin-bottom:1.2rem">Kurzy vytvořené pro těhotné ženy a jejich partnery (doprovodné osoby).</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;background:var(--rose-wash);border-radius:0.8rem;padding:0.7rem 1rem;cursor:pointer" onclick="openCourse('individual')">
+            <span style="font-size:0.9rem;color:var(--dark)">Individuální kurz</span>
+            <span style="color:var(--rose);font-size:0.85rem;font-weight:500">Detail →</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:var(--rose-wash);border-radius:0.8rem;padding:0.7rem 1rem;cursor:pointer" onclick="openCourse('skupina-doprovod')">
+            <span style="font-size:0.9rem;color:var(--dark)">Kurz v malé skupině</span>
+            <span style="color:var(--rose);font-size:0.85rem;font-weight:500">Detail →</span>
+          </div>
+        </div>
       </div>
 
       <!-- Card 2 -->
-      <div class="card" style="cursor:pointer" onclick="openCourse('skupina-doprovod')">
-        <div style="margin-bottom:1rem;"><picture><source srcset="/icons web studio/8.webp" type="image/webp"><img src="/icons web studio/8.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></div>
-        <span class="price-tag">3 500 Kč / pár</span>
-        <h3 style="margin-bottom:0.6rem">Kurz v malé skupině — pro ženy a doprovod</h3>
-        <p style="font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem">3 setkání · cca 90 min · max. 2 páry</p>
-        <p style="font-size:0.9rem;color:var(--mid)">Příprava v bezpečné malé skupině. Stejný obsah jako individuální kurz, plus sdílení zkušeností s dalšími nastávajícími rodiči.</p>
-        <div style="margin-top:1.5rem"><span style="color:var(--rose);font-size:0.85rem;font-weight:500">Zobrazit detail →</span></div>
+      <div class="card">
+        <div style="margin-bottom:1rem;"><picture><source srcset="/icons web studio/6.webp" type="image/webp"><img src="/icons web studio/6.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></div>
+        <h3 style="margin-bottom:0.6rem">V hlavní roli ženy</h3>
+        <p style="font-size:0.9rem;color:var(--mid);margin-bottom:1.2rem">Kurzy určené pro těhotné ženy, které chtějí absolvovat kurz bez partnera.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;background:var(--rose-wash);border-radius:0.8rem;padding:0.7rem 1rem;cursor:pointer" onclick="openCourse('skupina-zeny')">
+            <span style="font-size:0.9rem;color:var(--dark)">Kurz v malé skupině</span>
+            <span style="color:var(--rose);font-size:0.85rem;font-weight:500">Detail →</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.5rem;background:var(--bg);border-radius:0.8rem;padding:0.7rem 1rem">
+            <span style="font-size:0.88rem;color:var(--mid)">Prevence porodního poranění a péče o jizvu po porodu <em>(tento kurz pro vás připravuji)</em></span>
+          </div>
+        </div>
       </div>
 
       <!-- Card 3 -->
-      <div class="card" style="cursor:pointer" onclick="openCourse('skupina-zeny')">
-        <div style="margin-bottom:1rem;"><picture><source srcset="/icons web studio/6.webp" type="image/webp"><img src="/icons web studio/6.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></div>
-        <span class="price-tag">3 500 Kč / žena</span>
-        <h3 style="margin-bottom:0.6rem">Kurz v malé skupině — v hlavní roli ženy</h3>
-        <p style="font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem">3 setkání · cca 90 min · max. 4 ženy</p>
-        <p style="font-size:0.9rem;color:var(--mid)">Pro těhotné ženy, které chtějí absolvovat kurz bez partnera/doprovodu.</p>
-        <div style="margin-top:1.5rem"><span style="color:var(--rose);font-size:0.85rem;font-weight:500">Zobrazit detail →</span></div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="card" style="cursor:pointer" onclick="openCourse('prakticka-lekce')">
+      <div class="card">
         <div style="margin-bottom:1rem;"><picture><source srcset="/icons web studio/7.webp" type="image/webp"><img src="/icons web studio/7.png" alt="" loading="lazy" style="width:64px;height:64px;object-fit:contain"></div>
-        <span class="price-tag">1 500 Kč</span>
-        <h3 style="margin-bottom:0.6rem">Praktická lekce</h3>
-        <p style="font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem">1 lekce · 2 hodiny · od 33. týdne</p>
-        <p style="font-size:0.9rem;color:var(--mid)">Nejdůležitější témata v jediné lekci — ideální pro ženy, které na celý kurz nestíhají.</p>
-        <div style="margin-top:1.5rem"><span style="color:var(--rose);font-size:0.85rem;font-weight:500">Zobrazit detail →</span></div>
+        <h3 style="margin-bottom:0.6rem">Konzultace</h3>
+        <p style="font-size:0.9rem;color:var(--mid);margin-bottom:0.8rem">Nejčastější témata:</p>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:0.3rem">
+          <li style="font-size:0.9rem;color:var(--mid);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:var(--rose)">–</span> Plánovaný císařský řez</li>
+          <li style="font-size:0.9rem;color:var(--mid);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:var(--rose)">–</span> Císařský řez v anamnéze</li>
+          <li style="font-size:0.9rem;color:var(--mid);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:var(--rose)">–</span> Plod v poloze KP (koncem pánevním)</li>
+          <li style="font-size:0.9rem;color:var(--mid);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:var(--rose)">–</span> Vyvolání porodu</li>
+        </ul>
+        <a href="/kontakt" class="btn btn-outline">Napsat Šárce</a>
       </div>
 
     </div>
@@ -251,12 +272,13 @@
           <p style="color:var(--mid);margin-bottom:1.5rem">Individuální příprava je zcela přizpůsobena vám — vašemu těhotenství, vašim otázkám a obavám. Probíhá v soukromí, bez spěchu a s maximálním prostorem pro osobní témata.</p>
           <h3 style="margin-bottom:1rem">Co kurz zahrnuje</h3>
           <ul class="course-includes">
+            <li>Informace o době před porodem</li>
             <li>Orientace v průběhu porodu</li>
             <li>Praktické zvládání porodní bolesti</li>
             <li>Úlevové polohy a práce s dechem</li>
             <li>Příprava partnera na aktivní roli</li>
             <li>Porodnické postupy a možnosti péče</li>
-            <li>Příprava na šestinedělí</li>
+            <li>Příprava na šestinedělí a kojení</li>
             <li>Základní péče o novorozence</li>
             <li>Prostor pro individuální dotazy</li>
           </ul>
@@ -285,12 +307,12 @@
           <p style="color:var(--mid);margin-bottom:1.5rem">Příprava v bezpečné a důvěrné atmosféře malé skupiny. Kurz zachovává individuální přístup a zároveň nabízí sdílení s dalším párem ve stejné situaci.</p>
           <h3 style="margin-bottom:1rem">Co kurz zahrnuje</h3>
           <ul class="course-includes">
-            <li>Stejný obsah jako individuální kurz</li>
+            <li>Informace o době před porodem</li>
             <li>Orientace v průběhu porodu</li>
             <li>Praktické zvládání porodní bolesti</li>
             <li>Úlevové polohy a práce s dechem</li>
             <li>Příprava partnera na aktivní roli</li>
-            <li>Příprava na šestinedělí</li>
+            <li>Příprava na šestinedělí a kojení</li>
             <li>Základní péče o novorozence</li>
             <li>Sdílení a vzájemná podpora</li>
           </ul>
@@ -319,11 +341,12 @@
           <p style="color:var(--mid);margin-bottom:1.5rem">Pro těhotné ženy, které chtějí absolvovat kurz bez partnera nebo doprovodu — v bezpečné skupině žen, ve svém vlastním tempu a s prostorem pro to, co je zajímá.</p>
           <h3 style="margin-bottom:1rem">Co kurz zahrnuje</h3>
           <ul class="course-includes">
+            <li>Informace o době před porodem</li>
             <li>Orientace v průběhu porodu</li>
             <li>Praktické zvládání porodní bolesti</li>
             <li>Úlevové polohy a práce s dechem</li>
             <li>Porodnické postupy a možnosti péče</li>
-            <li>Příprava na šestinedělí</li>
+            <li>Příprava na šestinedělí a kojení</li>
             <li>Základní péče o novorozence</li>
             <li>Sdílení a vzájemná podpora</li>
           </ul>
@@ -378,7 +401,7 @@
     <div style="max-width:720px;margin:0 auto">
       <div class="center" style="margin-bottom:2rem">
         <span class="tag">Zdravotní pojišťovna</span>
-        <h2>Kurz vám může <span class="u"><em>proplatit pojišťovna</em></span></h2>
+        <h2>Kurz vám může <span class="u"><em>proplatit vaše pojišťovna</em></span></h2>
         <p style="color:var(--mid);font-size:0.95rem;margin-top:1rem">Využijte možnost proplacení celé částky ceny kurzu u své zdravotní pojišťovny v rámci příspěvků a výhod pro těhotné ženy a maminky.</p>
       </div>
 
