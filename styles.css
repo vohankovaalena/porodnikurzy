@@ -1129,6 +1129,10 @@ footer a:hover { color: var(--rose-pale); }
   .spk-faq__q { font-size: 15px; padding: 18px 0; }
   .spk-faq__cta { padding: 30px 20px; }
   .service-card-top { padding: 1.2rem; }
+  .page-header { padding: 36px 5vw; }
+  .section { padding: 44px 0; }
+  .section-sm { padding: 28px 0; }
+  .courses-grid { margin-top: 1.2rem; }
 }
 
 /* Disable lift-on-tap for touch-only devices */
